@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Time Trial Leaderboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #02060a;
+    color: #e0e6f0;
+  }
+
+  .top-nav {
+    background: #050b11;
+    color: #9cb5d6;
+    font-size: 12px;
+    padding: 6px 10px;
+    text-align: right;
+    border-bottom: 1px solid #18202b;
+  }
+  .top-nav a {
+    color: #9cb5d6;
+    text-decoration: none;
+    margin-left: 8px;
+  }
+  .top-nav a:hover { text-decoration: underline; }
+
+  .page-header {
+    background: #0b1620;
+    color: #ffffff;
+    padding: 10px 14px;
+    border-bottom: 1px solid #202a38;
+  }
+  .page-header h1 {
+    margin: 0;
+    font-size: 18px;
+  }
+  .page-header span {
+    font-size: 11px;
+    color: #9cb5d6;
+  }
+
+  .content-wrap {
+    max-width: 1100px;
+    margin: 10px auto 30px;
+    padding: 0 8px;
+  }
+
+  .table-title {
+    font-size: 12px;
+    margin: 4px 2px 6px;
+    color: #9cb5d6;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    background: #111c28;
+    border: 1px solid #273446;
+  }
+
+  thead { background: #182434; }
+
+  th, td {
+    padding: 4px 6px;
+    border-bottom: 1px solid #273446;
+  }
+
+  th {
+    color: #ffffff;
+    text-align: left;
+    font-weight: bold;
+  }
+
+  th.rank-col, td.rank-col {
+    text-align: center;
+    width: 40px;
+  }
+
+  th.std-col, td.std-col {
+    text-align: center;
+    width: 50px;
+  }
+
+  th.date-col, td.date-col {
+    width: 110px;
+  }
+
+  tbody tr:nth-child(odd)  { background: #132132; }
+  tbody tr:nth-child(even) { background: #101b29; }
+  tbody tr:hover { background: #1b2b40; }
+
+  .warning {
+    color: #ff8080;
+    margin: 10px 0;
+    font-size: 12px;
+  }
+
+  .loading-cell {
+    text-align: center;
+    color: #9cb5d6;
+    font-style: italic;
+  }
+
+  .player-link {
+  color: #ffe28a;
+  text-decoration: none;
+  transition: color 120ms ease, text-shadow 120ms ease;
+}
+
+.player-link:hover {
+  color: #fff2b8;
+  text-shadow: 0 0 8px rgba(255,226,138,.55);
+  text-decoration: underline;
+}
+/* === Leaderboard table layout fix === */
+
+table.leaderboard {
+  table-layout: fixed;
+  width: 100%;
+}
+
+/* Rank */
+.rank-col {
+  width: 48px;
+  text-align: center;
+}
+
+/* Player */
+.player-col {
+  width: auto;
+  max-width: 260px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Time */
+.time-col {
+  width: 120px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Standard */
+.std-col {
+  width: 110px;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 11px;
+}
+
+/* Date */
+.date-col {
+  width: 96px;
+  text-align: center;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+/* Player link glow (MKDS style) */
+.player-col a {
+  color: #ffe28a;
+  text-decoration: none;
+  transition: color 120ms ease, text-shadow 120ms ease;
+}
+
+.player-col a:hover {
+  color: #fff2b8;
+  text-shadow: 0 0 8px rgba(255, 226, 138, 0.7);
+  text-decoration: underline;
+}
+
+
+
+</style>
+</head>
+<body>
+
+<div class="top-nav">
+  <a href="index.html">Home</a>
+  <a href="home.html">Tracks</a>
+  <a href="player.html">Profiles</a>
+  <a href="players.html">Players</a>
+  <a href="submit.html">Submit</a>
+</div>
+
+<div class="page-header">
+  <h1 id="trackTitle">Time Trial Leaderboard</h1>
+  <span id="trackSubtitle"></span>
+</div>
+
+<div class="content-wrap">
+  <div id="noTrackMsg" class="warning" style="display:none;">
+    No track selected. Go back to the track list or add <code>?track=Track Name</code> to the URL.
+  </div>
+
+  <div id="content" style="display:none;">
+    <div class="table-title">
+      Showing leaderboard for <strong id="trackLabel"></strong>
+    </div>
+
+    <table id="leaderboard">
+<thead>
+  <tr>
+    <th class="rank-col">Rank</th>
+    <th class="player-col">Player</th>
+    <th class="time-col">Time</th>
+    <th class="std-col">Std</th>
+    <th class="date-col">Date</th>
+  </tr>
+</thead>
+
+      <tbody>
+        <tr id="loadingRow">
+          <td colspan="5" class="loading-cell">Loading times…</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+// === API URL ===
+const API_URL = "https://mkds-submit-proxy.zachdashermk.workers.dev/";
+
+function getTrackNameFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const t = params.get("track");
+  return t ? t.trim() : null;
+}
+
+function parseTimeToSeconds(t) {
+  if (!t) return NaN;
+  const [m, s] = t.split(":");
+  const mm = Number(m);
+  const ss = Number(s);
+  if (Number.isNaN(mm) || Number.isNaN(ss)) return NaN;
+  return mm * 60 + ss;
+}
+
+const TRACK_NAME = getTrackNameFromURL();
+
+if (!TRACK_NAME) {
+  document.getElementById("noTrackMsg").style.display = "block";
+} else {
+  document.getElementById("trackTitle").textContent = TRACK_NAME;
+  document.getElementById("trackSubtitle").textContent = "Time Trial Rankings";
+  document.getElementById("trackLabel").textContent = TRACK_NAME;
+  document.getElementById("content").style.display = "block";
+
+  let rowsData = [];
+  let standardsRaw = [];
+  let standardsTable = [];
+
+  async function loadLeaderboard() {
+    const loadingRow = document.getElementById("loadingRow");
+
+    try {
+      // Load times + standards in parallel instead of sequentially
+      const [timesRes, stdRes] = await Promise.all([
+        fetch(API_URL + "?action=getTrack&track=" + encodeURIComponent(TRACK_NAME)),
+        fetch(API_URL + "?action=getStandards&track=" + encodeURIComponent(TRACK_NAME))
+      ]);
+
+      rowsData     = await timesRes.json();
+      standardsRaw = await stdRes.json();
+    } catch (err) {
+      if (loadingRow) {
+        loadingRow.querySelector(".loading-cell").textContent =
+          "Error loading data.";
+      }
+      console.error(err);
+      return;
+    }
+
+    buildStandardsTable();
+    renderTable();
+  }
+
+  function buildStandardsTable() {
+    standardsTable = [];
+    standardsRaw.forEach(r => {
+      const cutoffStr = r[0];
+      const code  = r[1];
+      const label = r[2];
+      const cutoffSeconds = parseTimeToSeconds(cutoffStr);
+      if (!code || !cutoffStr || Number.isNaN(cutoffSeconds)) return;
+      standardsTable.push({
+        cutoffSeconds,
+        code,
+        label: label || code
+      });
+    });
+    standardsTable.sort((a, b) => a.cutoffSeconds - b.cutoffSeconds);
+  }
+
+  function computeStandard(timeSeconds) {
+    if (!standardsTable.length || !timeSeconds || !isFinite(timeSeconds)) {
+      return { code: "–", label: "" };
+    }
+    for (const s of standardsTable) {
+      if (timeSeconds <= s.cutoffSeconds) {
+        return { code: s.code, label: s.label };
+      }
+    }
+    return { code: "NB", label: "Newbie" };
+  }
+
+  function renderTable() {
+    const tbody = document.querySelector("#leaderboard tbody");
+    tbody.innerHTML = "";
+
+    if (!rowsData.length) {
+      tbody.innerHTML =
+        `<tr><td colspan="5" class="loading-cell">No times submitted yet.</td></tr>`;
+      return;
+    }
+
+    // Precompute parsed times once, then sort
+    const augmented = rowsData.map(row => {
+      const [player, time, ts] = row;
+      return {
+        player,
+        time,
+        ts,
+        tSec: parseTimeToSeconds(time)
+      };
+    });
+
+    augmented.sort((a, b) => a.tSec - b.tSec);
+
+    augmented.forEach((row, index) => {
+      const std = computeStandard(row.tSec);
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+  <td class="rank-col">${index + 1}</td>
+
+  <td class="player-col">
+    <a class="track-link"
+       href="player.html?player=${encodeURIComponent(row.player)}"
+       title="${row.player}">
+      ${row.player}
+    </a>
+  </td>
+
+  <td class="time-col">${row.time || ""}</td>
+
+  <td class="std-col" title="${std.label}">
+    ${std.code}
+  </td>
+
+  <td class="date-col">
+    ${row.ts ? new Date(row.ts).toISOString().slice(0,10) : ""}
+  </td>
+`;
+
+
+      tbody.appendChild(tr);
+    });
+  }
+
+  loadLeaderboard();
+}
+</script>
+
+</body>
+</html>

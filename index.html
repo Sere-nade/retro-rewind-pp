@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retro Rewind – Home</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #070a0e;
+  color: #e0e6f0;
+}
+
+/* ===== Top Nav ===== */
+.top-strip {
+  background: #05070a;
+  border-bottom: 1px solid #1b2330;
+  padding: 6px 10px;
+  font-size: 12px;
+  text-align: right;
+}
+
+.top-strip a {
+  color: #9cb5d6;
+  text-decoration: none;
+  margin-left: 12px;
+}
+
+.top-strip a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Banner ===== */
+.banner {
+  background: linear-gradient(#0a0f16, #06090e);
+  border-bottom: 1px solid #202a38;
+  padding: 16px;
+}
+
+.banner h1 {
+  margin: 0;
+  font-size: 20px;
+}
+
+.banner .sub {
+  margin-top: 4px;
+  font-size: 12px;
+  color: #9cb5d6;
+}
+
+/* ===== Layout ===== */
+.frame {
+  max-width: 1100px;
+  margin: 20px auto 40px;
+  padding: 0 12px;
+}
+
+.panel {
+  background: #0b1118;
+  border: 1px solid #2a3445;
+  padding: 14px;
+}
+
+.panel + .panel {
+  margin-top: 16px;
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 10px;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #2a3445;
+}
+
+/* ===== News ===== */
+.news-item {
+  padding: 10px 0;
+  border-bottom: 1px solid #263142;
+}
+
+.news-item:last-child {
+  border-bottom: none;
+}
+
+.news-title {
+  font-size: 15px;
+  font-weight: bold;
+  color: #ffe28a;
+}
+
+.news-date {
+  font-size: 11px;
+  color: #9cb5d6;
+  margin: 3px 0 6px;
+}
+
+.news-body {
+  font-size: 13px;
+  line-height: 1.45;
+}
+
+.news-item img {
+  max-width: 100%;
+  margin: 8px 0;
+  border: 1px solid #2a3445;
+}
+
+/* ===== Quick Links ===== */
+.quick-links a {
+  display: inline-block;
+  margin-right: 14px;
+  margin-top: 6px;
+  font-size: 13px;
+  color: #ffe28a;
+  text-decoration: none;
+}
+
+.quick-links a:hover {
+  text-decoration: underline;
+  text-shadow: 0 0 6px rgba(255,226,138,.6);
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== Top Navigation ===== -->
+<div class="top-strip">
+  <a href="index.html">Home</a>
+  <a href="home.html">Tracks</a>
+  <a href="player.html">Profiles</a>
+  <a href="players.html">Players</a>
+  <a href="submit.html">Submit</a>
+</div>
+
+<!-- ===== Banner ===== -->
+<div class="banner">
+  <h1>Retro Rewind Time Trial Rankings</h1>
+  <div class="sub">Mario Kart DS–style leaderboards & player profiles</div>
+</div>
+
+<!-- ===== Main Content ===== -->
+<div class="frame">
+
+  <!-- Welcome -->
+  <div class="panel">
+    <div class="section-title">Welcome</div>
+    <p style="font-size:13px">
+      Welcome to <b>Retro Rewind</b>!  
+      Track your Time Trial records, compare standards, and view detailed player profiles.
+    </p>
+
+    <div class="quick-links">
+      <a href="home.html">→ View Track List</a>
+      <a href="players.html">→ Browse Players</a>
+      <a href="submit.html">→ Submit a Time</a>
+    </div>
+  </div>
+
+  <!-- News -->
+  <div class="panel">
+    <div class="section-title">News & Updates</div>
+    <div id="news">
+      <div style="color:#9cb5d6;font-style:italic">Loading news…</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ===== News Loader ===== -->
+<script>
+fetch("news.json")
+  .then(res => res.json())
+  .then(data => {
+    const box = document.getElementById("news");
+    box.innerHTML = "";
+
+    if (!data.posts || data.posts.length === 0) {
+      box.innerHTML = "<div style='color:#9cb5d6'>No news yet.</div>";
+      return;
+    }
+
+    data.posts.forEach(post => {
+      box.innerHTML += `
+        <div class="news-item">
+          <div class="news-title">${post.title}</div>
+          <div class="news-date">${post.date}</div>
+          ${post.image ? `<img src="${post.image}" alt="">` : ""}
+          <div class="news-body">${post.body}</div>
+        </div>
+      `;
+    });
+  })
+  .catch(() => {
+    document.getElementById("news").innerHTML =
+      "<div style='color:#ff8080'>Failed to load news.</div>";
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Players</title>
+
+<style>
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #070a0e;
+    color: #e0e6f0;
+  }
+
+  .top-strip {
+    background: #05070a;
+    border-bottom: 1px solid #1b2330;
+    padding: 6px 10px;
+    font-size: 12px;
+    text-align: right;
+  }
+  .top-strip a {
+    color: #9cb5d6;
+    text-decoration: none;
+    margin-left: 12px;
+  }
+  .top-strip a:hover { text-decoration: underline; }
+
+  .banner {
+    background: linear-gradient(#0a0f16, #06090e);
+    border-bottom: 1px solid #202a38;
+    padding: 14px;
+  }
+  .banner h1 {
+    margin: 0;
+    font-size: 18px;
+  }
+  .banner .sub {
+    font-size: 11px;
+    color: #9cb5d6;
+    margin-top: 4px;
+  }
+
+  .frame {
+    max-width: 900px;
+    margin: 18px auto;
+    padding: 0 10px;
+  }
+
+  .panel {
+    background: #0b1118;
+    border: 1px solid #2a3445;
+    padding: 12px;
+  }
+
+  .section-title {
+    font-size: 12px;
+    font-weight: bold;
+    border-bottom: 1px solid #2a3445;
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    padding: 6px 8px;
+    border-bottom: 1px solid #263142;
+  }
+
+  li:nth-child(odd) { background: #122033; }
+  li:nth-child(even){ background: #101a2a; }
+
+  li a {
+    color: #ffe28a;
+    text-decoration: none;
+  }
+
+  li a:hover {
+    color: #fff2b8;
+    text-shadow: 0 0 8px rgba(255,226,138,.55);
+    text-decoration: underline;
+  }
+
+  .msg {
+    color: #ff8080;
+    font-size: 12px;
+    display: none;
+    margin-bottom: 8px;
+  }
+</style>
+</head>
+
+<body>
+
+<div class="top-strip">
+  <a href="index.html">Home</a>
+  <a href="home.html">Tracks</a>
+  <a href="player.html">Profiles</a>
+  <a href="players.html">Players</a>
+  <a href="submit.html">Submit</a>
+</div>
+
+<div class="banner">
+  <h1>Players</h1>
+  <div class="sub">Click a player to view their profile.</div>
+</div>
+
+<div class="frame">
+  <div class="panel">
+    <div class="section-title">Player List</div>
+    <div id="msg" class="msg"></div>
+    <ul id="playerList">
+      <li>Loading players…</li>
+    </ul>
+  </div>
+</div>
+
+<script>
+  // Cloudflare Worker endpoint (safe to expose).
+  // IMPORTANT: no trailing slash.
+  const API_BASE = "https://mkds-submit-proxy.zachdashermk.workers.dev";
+
+  function showError(text) {
+    const msg = document.getElementById("msg");
+    msg.textContent = text;
+    msg.style.display = "block";
+  }
+
+  async function fetchPlayers() {
+    // ✅ Old “working” method: query-based proxy
+    // This matches your restored Worker which forwards GAS_URL + url.search.
+    const urlA = `${API_BASE}/?action=getPlayers`;
+
+    // ✅ Optional fallback if you ever re-add a /players route in the Worker
+    const urlB = `${API_BASE}/players`;
+
+    // Try A first, then B
+    let res = await fetch(urlA, { cache: "no-store" });
+    if (!res.ok) {
+      res = await fetch(urlB, { cache: "no-store" });
+    }
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.json();
+  }
+
+  async function loadPlayers() {
+    const list = document.getElementById("playerList");
+
+    try {
+      const data = await fetchPlayers();
+
+      if (!data || !Array.isArray(data.players)) {
+        throw new Error("Invalid response shape");
+      }
+
+      list.innerHTML = "";
+
+      data.players
+        .filter(Boolean)
+        .map(p => String(p).trim())
+        .filter(p => p.length > 0)
+        .sort((a, b) => a.localeCompare(b, undefined, { sensitivity: "base" }))
+        .forEach(name => {
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.href = `player.html?player=${encodeURIComponent(name)}`;
+          a.textContent = name;
+          li.appendChild(a);
+          list.appendChild(li);
+        });
+
+      if (!list.children.length) {
+        list.innerHTML = "<li>No players found yet.</li>";
+      }
+    } catch (err) {
+      console.error(err);
+      list.innerHTML = "";
+      showError("Error loading players. (Check that your Apps Script doGet supports action=getPlayers)");
+    }
+  }
+
+  loadPlayers();
+</script>
+
+</body>
+</html>

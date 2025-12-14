@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Player Profile</title>
+
+<style>
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #070a0e;
+    color: #e0e6f0;
+  }
+
+  .top-strip {
+    background: #05070a;
+    border-bottom: 1px solid #1b2330;
+    padding: 6px 10px;
+    font-size: 12px;
+    color: #9cb5d6;
+    text-align: right;
+  }
+  .top-strip a { color:#9cb5d6; text-decoration:none; margin-left:10px; }
+  .top-strip a:hover { text-decoration: underline; }
+
+  .banner {
+    background: linear-gradient(#0a0f16, #06090e);
+    border-bottom: 1px solid #202a38;
+    padding: 14px 14px 10px;
+  }
+  .banner h1 { margin: 0; font-size: 18px; letter-spacing: 0.2px; }
+  .banner .sub { margin-top: 4px; font-size: 11px; color: #9cb5d6; }
+
+  .frame { max-width: 1200px; margin: 14px auto 30px; padding: 0 10px; }
+
+  .panel {
+    background: #0b1118;
+    border: 1px solid #2a3445;
+    padding: 12px;
+  }
+  .panel + .panel { margin-top: 12px; }
+
+  .section-title {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 12px;
+    margin: 0 0 10px 0;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #2a3445;
+  }
+
+  .search-row { display: flex; gap: 8px; align-items: center; }
+  input {
+    flex: 1;
+    padding: 7px 8px;
+    font-size: 13px;
+    background: #101826;
+    color: #e0e6f0;
+    border: 1px solid #2a3445;
+  }
+  input:focus { outline: none; border-color: #ffe28a; box-shadow: 0 0 6px rgba(255,226,138,.55); }
+  button {
+    padding: 7px 10px;
+    font-size: 13px;
+    background: #1e3450;
+    color: #ffe28a;
+    border: 1px solid #3b4f6e;
+    cursor: pointer;
+  }
+  button:hover { background: #274463; }
+
+  .msg { margin-top: 8px; font-size: 12px; color: #ff8080; display: none; }
+
+  .who-wrap {
+    display: grid;
+    grid-template-columns: 1fr 340px 1fr;
+    gap: 12px;
+    align-items: start;
+  }
+  @media (max-width: 950px) { .who-wrap { grid-template-columns: 1fr; } }
+
+  .who-box {
+    grid-column: 2;
+    border: 1px solid #2a3445;
+    background: #0f1622;
+  }
+  .who-box table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .who-box td { padding: 6px 8px; border-bottom: 1px solid #263142; }
+  .who-box td:first-child {
+    width: 46%;
+    color: #cfe2ff;
+    font-style: italic;
+    text-align: right;
+    padding-right: 10px;
+  }
+  .who-box td:last-child { color: #ffffff; }
+
+  table.times {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    border: 1px solid #2a3445;
+    background: #101826;
+  }
+  table.times thead { background: #172333; }
+  table.times th, table.times td { padding: 5px 7px; border-bottom: 1px solid #263142; }
+  table.times th { color: #ffffff; text-align: left; font-weight: bold; }
+
+  table.times tbody tr:nth-child(odd) { background: #122033; }
+  table.times tbody tr:nth-child(even){ background: #101a2a; }
+  table.times tbody tr:hover { background: #1a2a40; }
+
+  .rank-col { width: 52px; text-align: center; }
+  .std-col {
+  width: 95px;
+  text-align: center;
+  white-space: nowrap;
+}
+
+  .date-col { width: 110px; }
+  .time-col { width: 120px; }
+
+  .track-link {
+    color: #ffe28a;
+    text-decoration: none;
+    transition: text-shadow 120ms ease, color 120ms ease;
+  }
+  .track-link:hover {
+    color: #fff2b8;
+    text-shadow: 0 0 8px rgba(255,226,138,.55);
+    text-decoration: underline;
+  }
+
+  .loading {
+    text-align: center;
+    color: #9cb5d6;
+    font-style: italic;
+  }
+
+  /* === Times table layout fix === */
+
+table.times {
+  table-layout: fixed;
+  width: 100%;
+}
+
+/* Rank */
+.rank-col {
+  width: 48px;
+  text-align: center;
+}
+
+/* Track name */
+.track-col {
+  width: auto;
+  max-width: 420px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Best Time */
+.time-col {
+  width: 110px;
+  text-align: center;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Standard */
+.std-col {
+  width: 110px;
+  text-align: center;
+  white-space: nowrap;
+  font-size: 11px;
+}
+
+/* Date */
+.date-col {
+  width: 96px;
+  text-align: center;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+</style>
+</head>
+
+<body>
+<div class="top-strip">
+  <a href="index.html">Home</a>
+  <a href="home.html">Tracks</a>
+  <a href="player.html">Profiles</a>
+  <a href="players.html">Players</a>
+  <a href="submit.html">Submit</a>
+</div>
+
+  <div class="banner">
+    <h1 id="pageTitle">Retro Rewind Profile</h1>
+    <div class="sub">Player page shows every track in index order (blank if no time).</div>
+  </div>
+
+  <div class="frame">
+
+    <div class="panel">
+      <div class="section-title">Search</div>
+      <div class="search-row">
+        <input id="playerInput" placeholder="Enter player name (case-insensitive match)" />
+        <button id="searchBtn">Search</button>
+      </div>
+      <div id="msg" class="msg"></div>
+    </div>
+
+    <div class="panel">
+      <div class="section-title">Who &amp; Where</div>
+      <div class="who-wrap">
+        <div></div>
+        <div class="who-box">
+          <table>
+            <tr><td>Player&apos;s Name</td><td id="whoName">–</td></tr>
+            <tr><td>Country</td><td id="whoCountry">Unknown</td></tr>
+            <tr><td>Town/Region</td><td id="whoTown">Unknown</td></tr>
+            <tr><td>Other Info</td><td id="whoOther">–</td></tr>
+          </table>
+        </div>
+        <div></div>
+      </div>
+    </div>
+
+    <div class="panel">
+      <div class="section-title">Times</div>
+      <table class="times">
+        <thead>
+  <tr>
+    <th class="rank-col">Rank</th>
+    <th class="track-col">Track</th>
+    <th class="time-col">Best Time</th>
+    <th class="std-col">Std</th>
+    <th class="date-col">Date</th>
+  </tr>
+</thead>
+
+        <tbody id="tbody">
+          <tr><td colspan="5" class="loading">Search a player to load times…</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+<script>
+  const API_URL = "https://mkds-submit-proxy.zachdashermk.workers.dev/";
+const STANDARD_ORDER = [
+  "God",
+  "Myth A","Myth B","Myth C","Myth D","Myth E",
+  "Titan A","Titan B","Titan C","Titan D","Titan E",
+  "Hero A","Hero B","Hero C","Hero D","Hero E",
+  "Expert A","Expert B","Expert C","Expert D","Expert E",
+  "Advanced A","Advanced B","Advanced C","Advanced D","Advanced E",
+  "Intermediate A","Intermediate B","Intermediate C","Intermediate D","Intermediate E",
+  "Beginner A","Beginner B","Beginner C","Beginner D","Beginner E",
+  "Newbie"
+];
+
+function formatStdDisplay(label) {
+  if (!label) return "–";
+  const idx = STANDARD_ORDER.indexOf(label);
+  if (idx === -1) return label;
+  return `${idx} / ${label}`;
+}
+
+
+  // IMPORTANT: This must match your index.html order.
+  // (This is the track list you gave in-order.)
+  const TRACKS = [
+    "SNES Mario Circuit 1",
+    "SNES Donut Plains 1",
+    "Beta Donut Plains 1",
+    "SNES Ghost Valley 1",
+    "SNES Bowser Castle 1",
+    "SNES Mario Circuit 2",
+    "SNES Choco Island 1",
+    "SNES Ghost Valley 2",
+    "SNES Donut Plains 2",
+    "Beta Donut Plains 2",
+    "SNES Bowser Castle 2",
+    "SNES Mario Circuit 3",
+    "SNES Koopa Beach 1",
+    "SNES Choco Island 2",
+    "SNES Vanilla Lake 1",
+    "SNES Bowser Castle 3",
+    "Tour Bowser Castle 3",
+    "SNES Mario Circuit 4",
+    "SNES Donut Plains 3",
+    "SNES Koopa Beach 2",
+    "SNES Ghost Valley 3",
+    "SNES Vanilla Lake 2",
+    "SNES Rainbow Road",
+    "SNES Rainbow Road U",
+    "N64 Luigi Raceway",
+    "N64 Moo Moo Farm",
+    "N64 Koopa Troopa Beach",
+    "N64 Kalimari Desert",
+    "N64 Toad's Turnpike",
+    "N64 Frappe Snowland",
+    "N64 Choco Mountain",
+    "Tour Choco Mountain",
+    "N64 Mario Raceway",
+    "N64 Wario Stadium",
+    "N64 Sherbet Land",
+    "N64 Royal Raceway",
+    "Wii U Royal Raceway",
+    "N64 Bowser's Castle",
+    "N64 DK's Jungle Parkway",
+    "N64 Yoshi Valley",
+    "N64 Banshee Boardwalk",
+    "N64 Rainbow Road",
+    "GBA Peach Circuit",
+    "Tour Peach Circuit",
+    "GBA Shy Guy Beach",
+    "GBA Riverside Park",
+    "Tour Riverside Park",
+    "GBA Bowser Castle 1",
+    "GBA Mario Circuit",
+    "GBA Mario Circuit U",
+    "GBA Boo Lake",
+    "Tour Boo Lake",
+    "GBA Cheese Land",
+    "Wii U Cheese Land",
+    "GBA Bowser Castle 2",
+    "GBA Luigi Circuit",
+    "GBA Sky Garden",
+    "Tour Sky Garden",
+    "GBA Cheep-Cheep Island",
+    "Tour Cheep-Cheep Island",
+    "GBA Sunset Wilds",
+    "Tour Sunset Wilds",
+    "GBA Snow Land",
+    "Tour Snow Land",
+    "GBA Ribbon Road",
+    "Wii U Ribbon Road",
+    "GBA Yoshi Desert",
+    "GBA Bowser Castle 3",
+    "GBA Lakeside Park",
+    "Tour Lakeside Park",
+    "GBA Broken Pier",
+    "GBA Bowser Castle 4",
+    "GBA Rainbow Road",
+    "GBA Rainbow Road DX",
+    "GCN Luigi Circuit",
+    "GCN Peach Beach",
+    "GCN Baby Park",
+    "Wii U Baby Park",
+    "GCN Dry Dry Desert",
+    "Wii U Dry Dry Desert",
+    "GCN Mushroom Bridge",
+    "GCN Mario Circuit",
+    "GCN Daisy Cruiser",
+    "GCN Waluigi Stadium",
+    "GCN Sherbet Land",
+    "Wii U Sherbet Land",
+    "GCN Mushroom City",
+    "GCN Yoshi Circuit",
+    "GCN DK Mountain",
+    "GCN Wario Colosseum",
+    "GCN Dino Dino Jungle",
+    "GCN Bowser's Castle",
+    "GCN Rainbow Road",
+    "DS Figure 8 Circuit",
+    "DS Yoshi Falls",
+    "DS Cheep Cheep Beach",
+    "DS Luigi's Mansion",
+    "DS Desert Hills",
+    "DS Delfino Square",
+    "Beta Delfino Square",
+    "DS Waluigi Pinball",
+    "DS Shroom Ridge",
+    "SW Shroom Ridge",
+    "DS DK Pass",
+    "DS Tick-Tock Clock",
+    "Wii U Tick-Tock Clock",
+    "DS Mario Circuit",
+    "DS Airship Fortress",
+    "DS Wario Stadium",
+    "DS Peach Gardens",
+    "DS Bowser Castle",
+    "DS Rainbow Road",
+    "Wii Luigi Circuit",
+    "Wii Moo Moo Meadows",
+    "Wii Mushroom Gorge",
+    "Wii Toad's Factory",
+    "Wii Mario Circuit",
+    "Wii Coconut Mall",
+    "Wii DK Summit",
+    "Tour DK Summit",
+    "Wii Wario's Gold Mine",
+    "Wii Daisy Circuit",
+    "Wii Koopa Cape",
+    "Wii Maple Treeway",
+    "Wii Grumble Volcano",
+    "Wii Dry Dry Ruins",
+    "Beta Dry Dry Ruins",
+    "Wii Moonview Highway",
+    "Wii Bowser's Castle",
+    "Wii Rainbow Road",
+    "3DS Toad Circuit",
+    "3DS Daisy Hills",
+    "3DS Cheep Cheep Lagoon",
+    "3DS Shy Guy Bazaar",
+    "3DS Wuhu Loop",
+    "3DS Mario Circuit",
+    "3DS Music Park",
+    "3DS Rock Rock Mountain",
+    "3DS Piranha Plant Slide",
+    "3DS Wario's Shipyard",
+    "3DS Neo Bowser City",
+    "3DS Maka Wuhu",
+    "3DS DK Jungle",
+    "3DS Rosalina's Ice World",
+    "3DS Bowser's Castle",
+    "3DS Rainbow Road",
+    "Wii U Mario Kart Stadium",
+    "Wii U Sweet Sweet Canyon",
+    "Wii U Thwomp Ruins",
+    "Wii U Mario Circuit",
+    "Wii U Toad Harbor",
+    "Wii U Twisted Mansion",
+    "Wii U Shy Guy Falls",
+    "Wii U Dolphin Shoals",
+    "Wii U Electrodrome",
+    "Wii U Mount Wario",
+    "Wii U Cloudtop Cruise",
+    "Wii U Bone-Dry Dunes",
+    "Wii U Bowser's Castle",
+    "Wii U Rainbow Road",
+    "Wii U Mute City",
+    "Wii U Excitebike Arena",
+    "Wii U Hyrule Circuit",
+    "Wii U Wild Woods",
+    "Wii U Animal Crossing",
+    "Wii U Super Bell Subway",
+    "Wii U Big Blue",
+    "SW Sky-High Sundae",
+    "SW Yoshi's Island",
+    "Tour Tokyo Blur",
+    "Tour Vancouver Velocity",
+    "Tour Singapore Speedway",
+    "Tour Madrid Drive",
+    "Tour Merry Mountain",
+    "Tour Ninja Hideaway",
+    "RMX Mario Circuit 1",
+    "RMX Choco Island 1",
+    "RMX Rainbow Road 1",
+    "RMX Rainbow Road 2",
+    "RMX Vanilla Lake 1",
+    "RMX Vanilla Lake 2",
+    "RMX Ghost Valley 1",
+    "RMX Bowser Castle 1",
+    "RMX Donut Plains 1",
+    "GP Mario Beach",
+    "GP Mario Highway",
+    "GP DK Jungle",
+    "GP Bananan Ruins",
+    "GP Snow Panic",
+    "GP Bowser's Castle",
+    "GP Castle Wall",
+    "GP Rainbow Coaster",
+    "GP2 Stadium Arena",
+    "SW2 Mario Bros. Circuit",
+    "SW2 Whistlestop Summit",
+    "SW2 Cheep Cheep Falls",
+    "Beta Dokan Course",
+    "Beta Nokonoko Beach"
+  ];
+
+  function qs(name) {
+    return new URLSearchParams(location.search).get(name);
+  }
+
+  function showMsg(text) {
+    const m = document.getElementById("msg");
+    m.textContent = text || "";
+    m.style.display = text ? "block" : "none";
+  }
+
+  function formatMMDDYYYY(v) {
+    if (!v) return "";
+    const s = String(v).trim();
+    if (/^\d{2}\/\d{2}\/\d{4}$/.test(s)) return s;
+    const d = new Date(s);
+    if (isNaN(d.getTime())) return "";
+    const mm = String(d.getMonth() + 1).padStart(2, "0");
+    const dd = String(d.getDate()).padStart(2, "0");
+    const yy = d.getFullYear();
+    return `${mm}/${dd}/${yy}`;
+  }
+
+  function renderAllTracks(entriesByTrack) {
+    const tbody = document.getElementById("tbody");
+    tbody.innerHTML = "";
+
+    for (const track of TRACKS) {
+      const e = entriesByTrack.get(track);
+
+      const rank = e?.rank ?? "–";
+      const time = e?.time ?? "–";
+      const std  = e?.stdLabel ? formatStdDisplay(e.stdLabel) : "–";
+      const date = e?.date ? formatMMDDYYYY(e.date) : "–";
+      const stdTitle = e?.stdLabel ? e.stdLabel : "";
+
+      const tr = document.createElement("tr");
+      tr.innerHTML = `
+        <td class="rank-col">${rank}</td>
+<td class="track-col">
+  <a class="track-link"
+     href="leaderboard.html?track=${encodeURIComponent(track)}"
+     title="${track}">
+    ${track}
+  </a>
+</td>
+
+        <td>${time}</td>
+        <td class="std-col" title="${stdTitle}">${std}</td>
+        <td class="date-col">${date}</td>
+      `;
+      tbody.appendChild(tr);
+    }
+  }
+
+  async function loadPlayer(player) {
+    showMsg("");
+    document.getElementById("pageTitle").textContent = "Retro Rewind Profile: " + player;
+    document.getElementById("whoName").textContent = player;
+
+    const tbody = document.getElementById("tbody");
+    tbody.innerHTML = `<tr><td colspan="5" class="loading">Loading…</td></tr>`;
+
+    try {
+      const url = API_URL + "?action=getPlayerFast&player=" + encodeURIComponent(player);
+      const res = await fetch(url);
+      const data = await res.json();
+
+      const displayName = data.player || player;
+      document.getElementById("whoName").textContent = displayName;
+
+      const tracksPlayed = (data.tracksPlayed != null) ? data.tracksPlayed : 0;
+      const avgRank = (data.averageRank == null) ? "–" : Number(data.averageRank).toFixed(2);
+      document.getElementById("whoOther").textContent = `${tracksPlayed} tracks played; avg rank ${avgRank}`;
+
+      // Map entries by track for fast lookup
+      const byTrack = new Map();
+      if (Array.isArray(data.entries)) {
+        for (const e of data.entries) {
+          if (e && e.track) byTrack.set(e.track, e);
+        }
+      }
+
+      // Render ALL tracks in index order
+      renderAllTracks(byTrack);
+
+    } catch (err) {
+      console.error(err);
+      showMsg("Error loading player profile.");
+      tbody.innerHTML = `<tr><td colspan="5" class="loading">Failed to load.</td></tr>`;
+    }
+  }
+
+  document.getElementById("searchBtn").addEventListener("click", () => {
+    const p = document.getElementById("playerInput").value.trim();
+    if (!p) return;
+    history.replaceState(null, "", "player.html?player=" + encodeURIComponent(p));
+    loadPlayer(p);
+  });
+
+  document.getElementById("playerInput").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") document.getElementById("searchBtn").click();
+  });
+
+  // Auto-load from URL
+  const p = qs("player");
+  if (p) {
+    document.getElementById("playerInput").value = p;
+    loadPlayer(p);
+  }
+</script>
+</body>
+</html>
