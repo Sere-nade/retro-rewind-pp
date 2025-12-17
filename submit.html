@@ -6,144 +6,82 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-  * { box-sizing: border-box; }
-
   body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
     background: #02060a;
     color: #e0e6f0;
   }
-
-  .top-nav {
-    background: #050b11;
-    color: #9cb5d6;
-    font-size: 12px;
-    padding: 6px 10px;
-    text-align: right;
-    border-bottom: 1px solid #18202b;
-  }
-  .top-nav a {
-    color: #9cb5d6;
-    text-decoration: none;
-    margin-left: 8px;
-  }
-  .top-nav a:hover { text-decoration: underline; }
-
-  .page-header {
-    background: #0b1620;
-    color: #ffffff;
-    padding: 10px 14px;
-    border-bottom: 1px solid #202a38;
-  }
-  .page-header h1 {
-    margin: 0;
-    font-size: 18px;
-  }
-  .page-header span {
-    font-size: 11px;
-    color: #9cb5d6;
-  }
-
-  .content-wrap {
-    max-width: 600px;
-    margin: 16px auto 40px;
-    padding: 0 10px;
-  }
-
   .card {
+    max-width: 600px;
+    margin: 20px auto;
     background: #111c28;
     border: 1px solid #273446;
-    padding: 12px 14px 16px;
+    padding: 16px;
   }
-
   label {
     display: block;
+    margin-top: 10px;
     font-size: 12px;
-    margin-top: 8px;
-    margin-bottom: 2px;
   }
-
-  select, input[type="text"] {
+  input, select {
     width: 100%;
-    padding: 5px 6px;
-    font-size: 13px;
+    padding: 6px;
+    margin-top: 4px;
     background: #0b1620;
     color: #e0e6f0;
     border: 1px solid #273446;
   }
-
-  select:focus, input[type="text"]:focus {
-    outline: none;
-    border-color: #ffe28a;
-    box-shadow: 0 0 4px #ffe28a;
-  }
-
-  .hint {
-    font-size: 11px;
-    color: #9cb5d6;
-  }
-
   button {
-    margin-top: 10px;
-    padding: 6px 10px;
-    font-size: 13px;
+    margin-top: 14px;
+    padding: 8px;
     background: #203755;
     color: #ffe28a;
     border: 1px solid #374764;
     cursor: pointer;
   }
-  button:hover {
-    background: #284566;
+  button:disabled {
+    opacity: 0.6;
+    cursor: default;
   }
-
   .status {
-    margin-top: 10px;
+    margin-top: 12px;
     font-size: 12px;
   }
-  .status.ok {
-    color: #9cff9c;
-  }
-  .status.err {
-    color: #ff8080;
-  }
+  .ok { color: #9cff9c; }
+  .err { color: #ff8080; }
 </style>
 </head>
+
 <body>
 
-<div class="top-nav">
-  <a href="home.html">&laquo; Back to Track List</a>
-</div>
+<div class="card">
+  <h2>Submit Time Trial</h2>
 
-<div class="page-header">
-  <h1>Submit Time Trial</h1>
-  <span>Your time will go into a pending list for verification.</span>
-</div>
+  <form id="submitForm">
+    <label>Track</label>
+    <select id="track" required></select>
 
-<div class="content-wrap">
-  <div class="card">
-    <form id="submitForm">
-      <label for="track">Track</label>
-      <select id="track" required></select>
+    <label>Player</label>
+    <input id="player" required>
 
-      <label for="player">Player name</label>
-      <input type="text" id="player" required maxlength="40" />
+    <label>Time (M:SS.mmm)</label>
+    <input id="time" placeholder="1:23.456" required>
 
-      <label for="time">Time <span class="hint">(format: M:SS.mmm, e.g. 1:23.456)</span></label>
-      <input type="text" id="time" required placeholder="1:23.456" />
+    <label>Optional ghost (.rkg, max 10 KB)</label>
+    <input type="file" id="rkg" accept=".rkg">
 
-      <button type="submit">Submit Time</button>
-
-      <div id="status" class="status"></div>
-    </form>
-  </div>
+    <button type="submit">Submit</button>
+    <div id="status" class="status"></div>
+  </form>
 </div>
 
 <script>
-// === API URL ===
-const API_URL = "https://mkds-submit-proxy.zachdashermk.workers.dev/";
+/* ===== CONFIG ===== */
+const WORKER_URL = "https://mkds-submit-proxy.zachdashermk.workers.dev/";
+const UPLOAD_URL = "https://test-two-brown-81.vercel.app/api/upload";
 
-// Full track list (same order as index/leaderboard)
+/* ===== TRACK LIST ===== */
 const trackNames = [
   "SNES Mario Circuit 1",
   "SNES Donut Plains 1",
@@ -345,61 +283,123 @@ const trackNames = [
   "Beta Nokonoko Beach"
 ];
 
-const trackSelect = document.getElementById("track");
-trackNames.forEach(name => {
-  const opt = document.createElement("option");
-  opt.value = name;
-  opt.textContent = name;
-  trackSelect.appendChild(opt);
+const trackSel = document.getElementById("track");
+trackNames.forEach(t => {
+  const o = document.createElement("option");
+  o.value = t;
+  o.textContent = t;
+  trackSel.appendChild(o);
 });
 
+/* ===== VALIDATION ===== */
 function isValidTime(t) {
   return /^\d{1,2}:\d{2}\.\d{3}$/.test(t);
 }
 
-document.getElementById("submitForm").addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const statusEl = document.getElementById("status");
-  statusEl.textContent = "";
-  statusEl.className = "status";
+/* ===== DUPLICATE SUBMISSION KEY ===== */
+function submissionKey(track, player, time) {
+  return `${track}||${player.toLowerCase()}||${time}`;
+}
 
-  const track  = trackSelect.value;
+/* ===== SUBMIT HANDLER ===== */
+document.getElementById("submitForm").addEventListener("submit", async e => {
+  e.preventDefault();
+
+  const status = document.getElementById("status");
+  const submitBtn = e.target.querySelector("button[type='submit']");
+  status.textContent = "";
+  status.className = "status";
+
+  const track  = trackSel.value;
   const player = document.getElementById("player").value.trim();
   const time   = document.getElementById("time").value.trim();
+  const file   = document.getElementById("rkg").files[0] || null;
 
-  if (!player || !time) {
-    statusEl.textContent = "Please fill in all fields.";
-    statusEl.classList.add("err");
+  if (!player || !isValidTime(time)) {
+    status.textContent = "Invalid input.";
+    status.classList.add("err");
     return;
   }
 
-  if (!isValidTime(time)) {
-    statusEl.textContent = "Time must be in format M:SS.mmm (e.g. 1:23.456).";
-    statusEl.classList.add("err");
+  // Prevent exact duplicate submission
+  const key = submissionKey(track, player, time);
+  const lastKey = localStorage.getItem("lastSubmissionKey");
+  if (lastKey === key) {
+    status.textContent = "You already submitted this exact time for this track.";
+    status.classList.add("err");
     return;
   }
+
+  if (file) {
+    if (!file.name.toLowerCase().endsWith(".rkg")) {
+      status.textContent = "Ghost must be a .rkg file.";
+      status.classList.add("err");
+      return;
+    }
+    if (file.size > 10 * 1024) {
+      status.textContent = "Ghost exceeds 10 KB.";
+      status.classList.add("err");
+      return;
+    }
+  }
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Submitting…";
 
   try {
-    const url =
-      API_URL +
-      "?action=submitPublic" +
-      "&track="  + encodeURIComponent(track) +
-      "&player=" + encodeURIComponent(player) +
-      "&time="   + encodeURIComponent(time);
+    let driveFileId = "";
+    let driveFileName = "";
 
-    const res  = await fetch(url);
-    const text = await res.text();
+    /* ===== 1) UPLOAD GHOST TO VERCEL ===== */
+    if (file) {
+      const fd = new FormData();
+      fd.append("file", file);
+      fd.append("track", track);
+      fd.append("player", player);
+      fd.append("time", time);
 
-    if (res.ok && text.trim() === "OK") {
-      statusEl.textContent = "Time submitted! It will appear after verification.";
-      statusEl.classList.add("ok");
-    } else {
-      statusEl.textContent = "Submission failed: " + (text || res.status);
-      statusEl.classList.add("err");
+      const uploadRes = await fetch(UPLOAD_URL, {
+        method: "POST",
+        body: fd
+      });
+
+      if (!uploadRes.ok) {
+        throw new Error("Ghost upload failed.");
+      }
+
+      const uploadJson = await uploadRes.json();
+      driveFileId = uploadJson.fileId || "";
+      driveFileName = uploadJson.fileName || "";
     }
+
+    /* ===== 2) SEND METADATA TO GAS VIA WORKER ===== */
+    const res = await fetch(WORKER_URL + "?action=submitPublic", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        track,
+        player,
+        time,
+        driveFileId,
+        driveFileName
+      })
+    });
+
+    if (!res.ok) {
+      throw new Error("Submission failed.");
+    }
+
+    localStorage.setItem("lastSubmissionKey", key);
+
+    status.textContent = "Time submitted! Pending verification.";
+    status.classList.add("ok");
+
   } catch (err) {
-    statusEl.textContent = "Network error while submitting.";
-    statusEl.classList.add("err");
+    status.textContent = err.message || "Network error.";
+    status.classList.add("err");
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Submit";
   }
 });
 </script>
