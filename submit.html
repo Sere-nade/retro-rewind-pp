@@ -68,6 +68,9 @@
     <label>Time (M:SS.mmm)</label>
     <input id="time" placeholder="1:23.456" required>
 
+    <!-- ✅ runDate is now hidden and auto-filled from the .rkg -->
+    <input type="hidden" id="runDate">
+
     <label>Optional ghost (.rkg, max 10 KB)</label>
     <input type="file" id="rkg" accept=".rkg">
 
@@ -78,7 +81,7 @@
 
 <script>
 /* ===== CONFIG ===== */
-const WORKER_URL = "https://mkds-submit-proxy.zachdashermk.workers.dev/";
+const WORKER_URL = "https://retro-rewind-pp.zachdashermk.workers.dev/";
 const UPLOAD_URL = "https://test-two-brown-81.vercel.app/api/upload";
 
 /* ===== TRACK LIST ===== */
@@ -280,7 +283,9 @@ const trackNames = [
   "SW2 Whistlestop Summit",
   "SW2 Cheep Cheep Falls",
   "Beta Dokan Course",
-  "Beta Nokonoko Beach"
+  "Beta Nokonoko Beach",
+  "SW2 Faraway Oasis",
+  "SW2 Crown City"
 ];
 
 const trackSel = document.getElementById("track");
@@ -297,9 +302,93 @@ function isValidTime(t) {
 }
 
 /* ===== DUPLICATE SUBMISSION KEY ===== */
-function submissionKey(track, player, time) {
-  return `${track}||${player.toLowerCase()}||${time}`;
+function submissionKey(track, player, time, runDate) {
+  return `${track}||${player.toLowerCase()}||${time}||${runDate}`;
 }
+
+/* ===== RKG DATE HELPERS ===== */
+function ddmmyyyyToIso(ddmmyyyy) {
+  // expects "DD.MM.YYYY"
+  if (!ddmmyyyy || !/^\d{2}\.\d{2}\.\d{4}$/.test(ddmmyyyy)) return "";
+  const [dd, mm, yyyy] = ddmmyyyy.split(".");
+  return `${yyyy}-${mm}-${dd}`; // for <input type="date">
+}
+
+/* ===== STATE: cache upload results so we don't upload twice ===== */
+let cachedUpload = {
+  fileName: "",
+  fileId: "",
+  driveLink: "",
+  rkgDate: "",     // "DD.MM.YYYY"
+  runDateIso: ""   // "YYYY-MM-DD"
+};
+
+/* ===== AUTO-EXTRACT DATE ON FILE SELECT ===== */
+const rkgInput = document.getElementById("rkg");
+const statusEl = document.getElementById("status");
+const runDateEl = document.getElementById("runDate");
+
+rkgInput.addEventListener("change", async () => {
+  statusEl.textContent = "";
+  statusEl.className = "status";
+  cachedUpload = { fileName:"", fileId:"", driveLink:"", rkgDate:"", runDateIso:"" };
+  runDateEl.value = "";
+
+  const file = rkgInput.files[0] || null;
+  if (!file) return;
+
+  if (!file.name.toLowerCase().endsWith(".rkg")) {
+    statusEl.textContent = "Ghost must be a .rkg file.";
+    statusEl.classList.add("err");
+    rkgInput.value = "";
+    return;
+  }
+  if (file.size > 10 * 1024) {
+    statusEl.textContent = "Ghost exceeds 10 KB.";
+    statusEl.classList.add("err");
+    rkgInput.value = "";
+    return;
+  }
+
+  // We upload immediately to extract date (and reuse upload on submit)
+  try {
+    statusEl.textContent = "Reading ghost date…";
+    const fd = new FormData();
+    fd.append("file", file);
+
+    // optional metadata (your backend can ignore)
+    fd.append("track", trackSel.value);
+
+    const uploadRes = await fetch(UPLOAD_URL, { method: "POST", body: fd });
+    if (!uploadRes.ok) {
+      const txt = await uploadRes.text().catch(() => "");
+      throw new Error(txt || "Ghost upload failed.");
+    }
+
+    const uploadJson = await uploadRes.json();
+    const rkgDate = uploadJson.rkgDate || "";        // "DD.MM.YYYY" from backend
+    const runDateIso = ddmmyyyyToIso(rkgDate);
+
+    cachedUpload.fileId = uploadJson.fileId || "";
+    cachedUpload.fileName = uploadJson.filename || uploadJson.fileName || file.name;
+    cachedUpload.driveLink = uploadJson.driveLink || "";
+    cachedUpload.rkgDate = rkgDate;
+    cachedUpload.runDateIso = runDateIso;
+
+    if (!runDateIso) {
+      statusEl.textContent = "Ghost uploaded, but could not extract date.";
+      statusEl.classList.add("err");
+      return;
+    }
+
+    runDateEl.value = runDateIso;
+    statusEl.textContent = `Ghost date detected: ${rkgDate}`;
+    statusEl.classList.add("ok");
+  } catch (err) {
+    statusEl.textContent = err?.message || "Network error while reading ghost.";
+    statusEl.classList.add("err");
+  }
+});
 
 /* ===== SUBMIT HANDLER ===== */
 document.getElementById("submitForm").addEventListener("submit", async e => {
@@ -315,32 +404,29 @@ document.getElementById("submitForm").addEventListener("submit", async e => {
   const time   = document.getElementById("time").value.trim();
   const file   = document.getElementById("rkg").files[0] || null;
 
+  // ✅ runDate now comes from the uploaded .rkg
+  const runDate = runDateEl.value; // "YYYY-MM-DD"
+
   if (!player || !isValidTime(time)) {
     status.textContent = "Invalid input.";
     status.classList.add("err");
     return;
   }
 
-  // Prevent exact duplicate submission
-  const key = submissionKey(track, player, time);
-  const lastKey = localStorage.getItem("lastSubmissionKey");
-  if (lastKey === key) {
-    status.textContent = "You already submitted this exact time for this track.";
+  // If a file is provided, require that we extracted a date
+  if (file && !runDate) {
+    status.textContent = "Please select a ghost and wait until the date is detected.";
     status.classList.add("err");
     return;
   }
 
-  if (file) {
-    if (!file.name.toLowerCase().endsWith(".rkg")) {
-      status.textContent = "Ghost must be a .rkg file.";
-      status.classList.add("err");
-      return;
-    }
-    if (file.size > 10 * 1024) {
-      status.textContent = "Ghost exceeds 10 KB.";
-      status.classList.add("err");
-      return;
-    }
+  // Prevent exact duplicate submission (includes date)
+  const key = submissionKey(track, player, time, runDate || "");
+  const lastKey = localStorage.getItem("lastSubmissionKey");
+  if (lastKey === key) {
+    status.textContent = "You already submitted this exact time for this track and date.";
+    status.classList.add("err");
+    return;
   }
 
   submitBtn.disabled = true;
@@ -350,29 +436,33 @@ document.getElementById("submitForm").addEventListener("submit", async e => {
     let driveFileId = "";
     let driveFileName = "";
 
-    /* ===== 1) UPLOAD GHOST TO VERCEL ===== */
+    // If a ghost exists, reuse cached upload results (no second upload)
     if (file) {
-      const fd = new FormData();
-      fd.append("file", file);
-      fd.append("track", track);
-      fd.append("player", player);
-      fd.append("time", time);
+      if (!cachedUpload.fileId) {
+        // fallback: in case user never triggered change event
+        const fd = new FormData();
+        fd.append("file", file);
+        fd.append("track", track);
+        fd.append("player", player);
+        fd.append("time", time);
 
-      const uploadRes = await fetch(UPLOAD_URL, {
-        method: "POST",
-        body: fd
-      });
+        const uploadRes = await fetch(UPLOAD_URL, { method: "POST", body: fd });
+        if (!uploadRes.ok) throw new Error("Ghost upload failed.");
+        const uploadJson = await uploadRes.json();
 
-      if (!uploadRes.ok) {
-        throw new Error("Ghost upload failed.");
+        const rkgDate = uploadJson.rkgDate || "";
+        const runDateIso = ddmmyyyyToIso(rkgDate);
+        if (runDateIso) runDateEl.value = runDateIso;
+
+        driveFileId = uploadJson.fileId || "";
+        driveFileName = uploadJson.filename || uploadJson.fileName || "";
+      } else {
+        driveFileId = cachedUpload.fileId;
+        driveFileName = cachedUpload.fileName;
       }
-
-      const uploadJson = await uploadRes.json();
-      driveFileId = uploadJson.fileId || "";
-      driveFileName = uploadJson.fileName || "";
     }
 
-    /* ===== 2) SEND METADATA TO GAS VIA WORKER ===== */
+    /* ===== SEND METADATA TO GAS VIA WORKER ===== */
     const res = await fetch(WORKER_URL + "?action=submitPublic", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -380,6 +470,7 @@ document.getElementById("submitForm").addEventListener("submit", async e => {
         track,
         player,
         time,
+        runDate: runDateEl.value || "",  // always ISO if ghost present
         driveFileId,
         driveFileName
       })
@@ -393,7 +484,6 @@ document.getElementById("submitForm").addEventListener("submit", async e => {
 
     status.textContent = "Time submitted! Pending verification.";
     status.classList.add("ok");
-
   } catch (err) {
     status.textContent = err.message || "Network error.";
     status.classList.add("err");
@@ -403,6 +493,3 @@ document.getElementById("submitForm").addEventListener("submit", async e => {
   }
 });
 </script>
-
-</body>
-</html>
