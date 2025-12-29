@@ -96,16 +96,6 @@ input {
   font-weight:700;
   text-align:center;
 }
-
-.code.GD { color:#ffcc66; }
-.code.EX { color:#9cff9c; }
-.code.IN { color:#6bbcff; }
-.code.NB { color:#aaa; }
-
-.loading {
-  color:var(--muted);
-  font-style:italic;
-}
 </style>
 </head>
 
@@ -121,15 +111,13 @@ input {
 </div>
 
 <h1>Standards</h1>
-<input id="search" placeholder="Search track or standard…">
+<input id="search" placeholder="Search track…">
 
 <div id="list"></div>
 
 <script>
-// 🔒 STATIC FILE – no backend
 let STANDARDS = {};
 
-// Track order preserved exactly
 const trackNames = [
   "SNES Mario Circuit 1",
   "SNES Donut Plains 1",
@@ -349,14 +337,15 @@ function createTrack(track) {
   body.className = "track-body";
 
   header.onclick = () => {
-    body.style.display = body.style.display === "none" ? "block" : "none";
+    body.style.display = body.style.display === "block" ? "none" : "block";
   };
 
   const rows = STANDARDS[track] || [];
+
   if (!rows.length) {
     body.textContent = "No standards.";
   } else {
-    rows.forEach(([cutoff, code, label]) => {
+    rows.forEach(({ cutoff, code, label }) => {
       const row = document.createElement("div");
       row.className = "row";
       row.innerHTML = `
@@ -373,12 +362,15 @@ function createTrack(track) {
   return box;
 }
 
-// Load static JSON
 fetch("standards.json")
   .then(r => r.json())
   .then(data => {
     STANDARDS = data;
-    TRACKS.forEach(t => list.appendChild(createTrack(t)));
+    trackNames.forEach(t => list.appendChild(createTrack(t)));
+  })
+  .catch(err => {
+    list.textContent = "Failed to load standards.";
+    console.error(err);
   });
 
 search.oninput = () => {
