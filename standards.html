@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>RR – Standards</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+:root {
+  --bg:#0b0f14;
+  --panel:#121826;
+  --border:#2a3445;
+  --text:#e0e6f0;
+  --muted:#9aa4b2;
+}
+
+body {
+  margin:0;
+  padding:20px;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+}
+
+h1 {
+  text-align:center;
+  margin-bottom:10px;
+}
+
+input {
+  width:100%;
+  max-width:500px;
+  margin:0 auto 20px;
+  display:block;
+  padding:10px;
+  font-size:15px;
+  background:#0f1523;
+  border:1px solid var(--border);
+  color:var(--text);
+}
+
+.track {
+  background:var(--panel);
+  border:1px solid var(--border);
+  border-radius:6px;
+  margin-bottom:12px;
+  overflow:hidden;
+}
+
+.track-header {
+  padding:12px 14px;
+  cursor:pointer;
+  font-weight:600;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.track-header:hover {
+  background:#182038;
+}
+
+.track-body {
+  display:none;
+  padding:12px 14px;
+  border-top:1px solid var(--border);
+}
+
+.row {
+  display:grid;
+  grid-template-columns: 90px 70px auto;
+  gap:10px;
+  padding:6px 0;
+  border-bottom:1px solid #1c2436;
+  font-size:14px;
+}
+
+.row:last-child {
+  border-bottom:none;
+}
+
+.cutoff { color:#9fb3ff; }
+.code {
+  font-weight:700;
+  text-align:center;
+}
+
+.code.GD { color:#ffcc66; }
+.code.EX { color:#9cff9c; }
+.code.IN { color:#6bbcff; }
+.code.NB { color:#aaa; }
+
+.loading {
+  color:var(--muted);
+  font-style:italic;
+}
+</style>
+</head>
+
+<body>
+
+<h1>Standards</h1>
+<input id="search" placeholder="Search track or standard…">
+
+<div id="list"></div>
+
+<script>
+const API = "https://mkds-submit-proxy.zachdashermk.workers.dev/";
+
+const TRACKS = [
+    "SNES Mario Circuit 1",
+    "SNES Donut Plains 1",
+    "Beta Donut Plains 1",
+    "SNES Ghost Valley 1",
+    "SNES Bowser Castle 1",
+    "SNES Mario Circuit 2",
+    "SNES Choco Island 1",
+    "SNES Ghost Valley 2",
+    "SNES Donut Plains 2",
+    "Beta Donut Plains 2",
+    "SNES Bowser Castle 2",
+    "SNES Mario Circuit 3",
+    "SNES Koopa Beach 1",
+    "SNES Choco Island 2",
+    "SNES Vanilla Lake 1",
+    "SNES Bowser Castle 3",
+    "Tour Bowser Castle 3",
+    "SNES Mario Circuit 4",
+    "SNES Donut Plains 3",
+    "SNES Koopa Beach 2",
+    "SNES Ghost Valley 3",
+    "SNES Vanilla Lake 2",
+    "SNES Rainbow Road",
+    "SNES Rainbow Road U",
+    "N64 Luigi Raceway",
+    "N64 Moo Moo Farm",
+    "N64 Koopa Troopa Beach",
+    "N64 Kalimari Desert",
+    "N64 Toad's Turnpike",
+    "N64 Frappe Snowland",
+    "N64 Choco Mountain",
+    "Tour Choco Mountain",
+    "N64 Mario Raceway",
+    "N64 Wario Stadium",
+    "N64 Sherbet Land",
+    "N64 Royal Raceway",
+    "Wii U Royal Raceway",
+    "N64 Bowser's Castle",
+    "N64 DK's Jungle Parkway",
+    "N64 Yoshi Valley",
+    "N64 Banshee Boardwalk",
+    "N64 Rainbow Road",
+    "GBA Peach Circuit",
+    "Tour Peach Circuit",
+    "GBA Shy Guy Beach",
+    "GBA Riverside Park",
+    "Tour Riverside Park",
+    "GBA Bowser Castle 1",
+    "GBA Mario Circuit",
+    "GBA Mario Circuit U",
+    "GBA Boo Lake",
+    "Tour Boo Lake",
+    "GBA Cheese Land",
+    "Wii U Cheese Land",
+    "GBA Bowser Castle 2",
+    "GBA Luigi Circuit",
+    "GBA Sky Garden",
+    "Tour Sky Garden",
+    "GBA Cheep-Cheep Island",
+    "Tour Cheep-Cheep Island",
+    "GBA Sunset Wilds",
+    "Tour Sunset Wilds",
+    "GBA Snow Land",
+    "Tour Snow Land",
+    "GBA Ribbon Road",
+    "Wii U Ribbon Road",
+    "GBA Yoshi Desert",
+    "GBA Bowser Castle 3",
+    "GBA Lakeside Park",
+    "Tour Lakeside Park",
+    "GBA Broken Pier",
+    "GBA Bowser Castle 4",
+    "GBA Rainbow Road",
+    "GBA Rainbow Road DX",
+    "GCN Luigi Circuit",
+    "GCN Peach Beach",
+    "GCN Baby Park",
+    "Wii U Baby Park",
+    "GCN Dry Dry Desert",
+    "Wii U Dry Dry Desert",
+    "GCN Mushroom Bridge",
+    "GCN Mario Circuit",
+    "GCN Daisy Cruiser",
+    "GCN Waluigi Stadium",
+    "GCN Sherbet Land",
+    "Wii U Sherbet Land",
+    "GCN Mushroom City",
+    "GCN Yoshi Circuit",
+    "GCN DK Mountain",
+    "GCN Wario Colosseum",
+    "GCN Dino Dino Jungle",
+    "GCN Bowser's Castle",
+    "GCN Rainbow Road",
+    "DS Figure 8 Circuit",
+    "DS Yoshi Falls",
+    "DS Cheep Cheep Beach",
+    "DS Luigi's Mansion",
+    "DS Desert Hills",
+    "DS Delfino Square",
+    "Beta Delfino Square",
+    "DS Waluigi Pinball",
+    "DS Shroom Ridge",
+    "SW Shroom Ridge",
+    "DS DK Pass",
+    "DS Tick-Tock Clock",
+    "Wii U Tick-Tock Clock",
+    "DS Mario Circuit",
+    "DS Airship Fortress",
+    "DS Wario Stadium",
+    "DS Peach Gardens",
+    "DS Bowser Castle",
+    "DS Rainbow Road",
+    "Wii Luigi Circuit",
+    "Wii Moo Moo Meadows",
+    "Wii Mushroom Gorge",
+    "Wii Toad's Factory",
+    "Wii Mario Circuit",
+    "Wii Coconut Mall",
+    "Wii DK Summit",
+    "Tour DK Summit",
+    "Wii Wario's Gold Mine",
+    "Wii Daisy Circuit",
+    "Wii Koopa Cape",
+    "Wii Maple Treeway",
+    "Wii Grumble Volcano",
+    "Wii Dry Dry Ruins",
+    "Beta Dry Dry Ruins",
+    "Wii Moonview Highway",
+    "Wii Bowser's Castle",
+    "Wii Rainbow Road",
+    "3DS Toad Circuit",
+    "3DS Daisy Hills",
+    "3DS Cheep Cheep Lagoon",
+    "3DS Shy Guy Bazaar",
+    "3DS Wuhu Loop",
+    "3DS Mario Circuit",
+    "3DS Music Park",
+    "3DS Rock Rock Mountain",
+    "3DS Piranha Plant Slide",
+    "3DS Wario's Shipyard",
+    "3DS Neo Bowser City",
+    "3DS Maka Wuhu",
+    "3DS DK Jungle",
+    "3DS Rosalina's Ice World",
+    "3DS Bowser's Castle",
+    "3DS Rainbow Road",
+    "Wii U Mario Kart Stadium",
+    "Wii U Sweet Sweet Canyon",
+    "Wii U Thwomp Ruins",
+    "Wii U Mario Circuit",
+    "Wii U Toad Harbor",
+    "Wii U Twisted Mansion",
+    "Wii U Shy Guy Falls",
+    "Wii U Dolphin Shoals",
+    "Wii U Electrodrome",
+    "Wii U Mount Wario",
+    "Wii U Cloudtop Cruise",
+    "Wii U Bone-Dry Dunes",
+    "Wii U Bowser's Castle",
+    "Wii U Rainbow Road",
+    "Wii U Mute City",
+    "Wii U Excitebike Arena",
+    "Wii U Hyrule Circuit",
+    "Wii U Wild Woods",
+    "Wii U Animal Crossing",
+    "Wii U Super Bell Subway",
+    "Wii U Big Blue",
+    "SW Sky-High Sundae",
+    "SW Yoshi's Island",
+    "Tour Tokyo Blur",
+    "Tour Vancouver Velocity",
+    "Tour Singapore Speedway",
+    "Tour Madrid Drive",
+    "Tour Merry Mountain",
+    "Tour Ninja Hideaway",
+    "RMX Mario Circuit 1",
+    "RMX Choco Island 1",
+    "RMX Rainbow Road 1",
+    "RMX Rainbow Road 2",
+    "RMX Vanilla Lake 1",
+    "RMX Vanilla Lake 2",
+    "RMX Ghost Valley 1",
+    "RMX Bowser Castle 1",
+    "RMX Donut Plains 1",
+    "GP Mario Beach",
+    "GP Mario Highway",
+    "GP DK Jungle",
+    "GP Bananan Ruins",
+    "GP Snow Panic",
+    "GP Bowser's Castle",
+    "GP Castle Wall",
+    "GP Rainbow Coaster",
+    "GP2 Stadium Arena",
+    "SW2 Mario Bros. Circuit",
+    "SW2 Whistlestop Summit",
+    "SW2 Cheep Cheep Falls",
+    "Beta Dokan Course",
+    "Beta Nokonoko Beach",
+      "SW2 Faraway Oasis",
+  "SW2 Crown City"
+  ];
+
+const list = document.getElementById("list");
+const search = document.getElementById("search");
+
+function createTrack(track) {
+  const box = document.createElement("div");
+  box.className = "track";
+  box.dataset.track = track.toLowerCase();
+
+  const header = document.createElement("div");
+  header.className = "track-header";
+  header.textContent = track;
+
+  const body = document.createElement("div");
+  body.className = "track-body loading";
+  body.textContent = "Loading…";
+
+  header.onclick = async () => {
+    if (body.dataset.loaded) {
+      body.style.display = body.style.display === "none" ? "block" : "none";
+      return;
+    }
+
+    body.style.display = "block";
+
+    const res = await fetch(
+      API + "?action=getStandards&track=" + encodeURIComponent(track)
+    );
+    const data = await res.json();
+
+    body.innerHTML = "";
+    body.classList.remove("loading");
+
+    if (!data.length) {
+      body.textContent = "No standards.";
+    } else {
+      data.forEach(([cutoff, code, label]) => {
+        const row = document.createElement("div");
+        row.className = "row";
+        row.innerHTML = `
+          <div class="cutoff">${cutoff}</div>
+          <div class="code ${code}">${code}</div>
+          <div>${label}</div>
+        `;
+        body.appendChild(row);
+      });
+    }
+
+    body.dataset.loaded = "1";
+  };
+
+  box.appendChild(header);
+  box.appendChild(body);
+  return box;
+}
+
+TRACKS.forEach(t => list.appendChild(createTrack(t)));
+
+search.oninput = () => {
+  const q = search.value.toLowerCase();
+  document.querySelectorAll(".track").forEach(t => {
+    t.style.display = t.dataset.track.includes(q) ? "" : "none";
+  });
+};
+</script>
+
+</body>
+</html>
