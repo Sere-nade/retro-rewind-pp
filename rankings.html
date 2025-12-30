@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>RR – Rankings</title>
+
+<style>
+  body{ margin:0; background:#0b0f14; color:#e0e6f0; font-family: Arial, sans-serif; }
+  .wrap{ max-width:1200px; margin:24px auto; padding:0 14px; }
+  table{ width:100%; border-collapse:collapse; background:#1b2a3a; border:1px solid #24374e; }
+  thead th{
+    background:#0f1a28; color:#e0e6f0; font-weight:bold;
+    padding:6px 10px; border-bottom:1px solid #24374e; font-size:14px;
+  }
+  tbody td{
+    padding:6px 10px; border-bottom:1px solid #24374e; font-size:14px;
+    text-align:center;
+  }
+  tbody tr:nth-child(odd){ background:#2b3d4f; }
+  tbody tr:nth-child(even){ background:#3a4f61; }
+  td.player{ text-align:center; font-weight:600; }
+  td.country{ text-align:center; }
+  td.score{ text-align:center; font-variant-numeric: tabular-nums; }
+  .infoBtn{
+    display:inline-flex; align-items:center; justify-content:center;
+    width:18px; height:18px; border-radius:50%;
+    background:#0a6fb3; color:white; font-weight:bold; font-size:12px;
+    text-decoration:none;
+  }
+</style>
+</head>
+
+<body>
+<div class="wrap">
+  <table>
+    <thead>
+      <tr>
+        <th style="width:70px;">Rank</th>
+        <th>Player</th>
+        <th style="width:70px;">Info</th>
+        <th style="width:220px;">Country</th>
+        <th style="width:220px;">Score</th>
+      </tr>
+    </thead>
+    <tbody id="rows"></tbody>
+  </table>
+</div>
+
+<script>
+  const API = "https://mkds-submit-proxy.zachdashermk.workers.dev/?action=getRankingsAF";
+
+  fetch(API)
+    .then(r => r.json())
+    .then(list => {
+      const tbody = document.getElementById("rows");
+      tbody.innerHTML = "";
+
+      list.forEach((p, i) => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${i + 1}</td>
+          <td class="player">${escapeHtml(p.player)}</td>
+          <td><a class="infoBtn" href="player.html?player=${encodeURIComponent(p.player)}" title="View profile">i</a></td>
+          <td class="country">${escapeHtml(p.country || "")}</td>
+          <td class="score">${Number(p.score).toFixed(4)}</td>
+        `;
+        tbody.appendChild(tr);
+      });
+    });
+
+  function escapeHtml(s){
+    return String(s).replace(/[&<>"']/g, m => ({
+      "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+    }[m]));
+  }
+</script>
+</body>
+</html>
