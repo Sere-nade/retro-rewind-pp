@@ -37015,5 +37015,193 @@
       "code": "NEWBIE",
       "label": "Newbie"
     }
+  ],
+
+"Wii U Bone-Dry Dunes": [
+    {
+      "cutoff": "2:00.400",
+      "code": "GD",
+      "label": "God"
+    },
+    {
+      "cutoff": "2:00.580",
+      "code": "MA",
+      "label": "Myth A"
+    },
+    {
+      "cutoff": "2:00.760",
+      "code": "MB",
+      "label": "Myth B"
+    },
+    {
+      "cutoff": "2:00.940",
+      "code": "MC",
+      "label": "Myth C"
+    },
+    {
+      "cutoff": "2:01.120",
+      "code": "MD",
+      "label": "Myth D"
+    },
+    {
+      "cutoff": "2:01.300",
+      "code": "ME",
+      "label": "Myth E"
+    },
+    {
+      "cutoff": "2:01.550",
+      "code": "TA",
+      "label": "Titan A"
+    },
+    {
+      "cutoff": "2:01.800",
+      "code": "TB",
+      "label": "Titan B"
+    },
+    {
+      "cutoff": "2:02.050",
+      "code": "TC",
+      "label": "Titan C"
+    },
+    {
+      "cutoff": "2:02.300",
+      "code": "TD",
+      "label": "Titan D"
+    },
+    {
+      "cutoff": "2:02.550",
+      "code": "TE",
+      "label": "Titan E"
+    },
+    {
+      "cutoff": "2:02.920",
+      "code": "HA",
+      "label": "Hero A"
+    },
+    {
+      "cutoff": "2:03.290",
+      "code": "HB",
+      "label": "Hero B"
+    },
+    {
+      "cutoff": "2:03.660",
+      "code": "HC",
+      "label": "Hero C"
+    },
+    {
+      "cutoff": "2:04.030",
+      "code": "HD",
+      "label": "Hero D"
+    },
+    {
+      "cutoff": "2:04.400",
+      "code": "HE",
+      "label": "Hero E"
+    },
+    {
+      "cutoff": "2:04.900",
+      "code": "EA",
+      "label": "Expert A"
+    },
+    {
+      "cutoff": "2:05.400",
+      "code": "EB",
+      "label": "Expert B"
+    },
+    {
+      "cutoff": "2:05.900",
+      "code": "EC",
+      "label": "Expert C"
+    },
+    {
+      "cutoff": "2:06.400",
+      "code": "ED",
+      "label": "Expert D"
+    },
+    {
+      "cutoff": "2:06.900",
+      "code": "EE",
+      "label": "Expert E"
+    },
+    {
+      "cutoff": "2:07.500",
+      "code": "AA",
+      "label": "Advanced A"
+    },
+    {
+      "cutoff": "2:08.100",
+      "code": "AB",
+      "label": "Advanced B"
+    },
+    {
+      "cutoff": "2:08.700",
+      "code": "AC",
+      "label": "Advanced C"
+    },
+    {
+      "cutoff": "2:09.300",
+      "code": "AD",
+      "label": "Advanced D"
+    },
+    {
+      "cutoff": "2:09.900",
+      "code": "AE",
+      "label": "Advanced E"
+    },
+    {
+      "cutoff": "2:10.700",
+      "code": "IA",
+      "label": "Intermediate A"
+    },
+    {
+      "cutoff": "2:11.500",
+      "code": "IB",
+      "label": "Intermediate B"
+    },
+    {
+      "cutoff": "2:12.300",
+      "code": "IC",
+      "label": "Intermediate C"
+    },
+    {
+      "cutoff": "2:13.100",
+      "code": "ID",
+      "label": "Intermediate D"
+    },
+    {
+      "cutoff": "2:13.900",
+      "code": "IE",
+      "label": "Intermediate E"
+    },
+    {
+      "cutoff": "2:14.900",
+      "code": "BA",
+      "label": "Beginner A"
+    },
+    {
+      "cutoff": "2:15.900",
+      "code": "BB",
+      "label": "Beginner B"
+    },
+    {
+      "cutoff": "2:16.900",
+      "code": "BC",
+      "label": "Beginner C"
+    },
+    {
+      "cutoff": "2:17.900",
+      "code": "BD",
+      "label": "Beginner D"
+    },
+    {
+      "cutoff": "2:18.900",
+      "code": "BE",
+      "label": "Beginner E"
+    },
+    {
+      "cutoff": "2:21.000",
+      "code": "NEWBIE",
+      "label": "Newbie"
+    }
   ]
 }
