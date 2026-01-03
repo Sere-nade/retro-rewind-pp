@@ -110,78 +110,76 @@
   }
 
   .player-link {
-  color: #ffe28a;
-  text-decoration: none;
-  transition: color 120ms ease, text-shadow 120ms ease;
-}
+    color: #ffe28a;
+    text-decoration: none;
+    transition: color 120ms ease, text-shadow 120ms ease;
+  }
 
-.player-link:hover {
-  color: #fff2b8;
-  text-shadow: 0 0 8px rgba(255,226,138,.55);
-  text-decoration: underline;
-}
-/* === Leaderboard table layout fix === */
+  .player-link:hover {
+    color: #fff2b8;
+    text-shadow: 0 0 8px rgba(255,226,138,.55);
+    text-decoration: underline;
+  }
 
-table.leaderboard {
-  table-layout: fixed;
-  width: 100%;
-}
+  /* === Leaderboard table layout fix === */
+  table.leaderboard {
+    table-layout: fixed;
+    width: 100%;
+  }
 
-/* Rank */
-.rank-col {
-  width: 48px;
-  text-align: center;
-}
+  /* Rank */
+  .rank-col {
+    width: 48px;
+    text-align: center;
+  }
 
-/* Player */
-.player-col {
-  width: auto;
-  max-width: 260px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+  /* Player */
+  .player-col {
+    width: auto;
+    max-width: 260px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
-/* Time */
-.time-col {
-  width: 120px;
-  text-align: center;
-  font-variant-numeric: tabular-nums;
-}
+  /* Time */
+  .time-col {
+    width: 120px;
+    text-align: center;
+    font-variant-numeric: tabular-nums;
+  }
 
-/* Standard */
-.std-col {
-  width: 110px;
-  text-align: center;
-  white-space: nowrap;
-  font-size: 11px;
-}
+  /* Standard */
+  .std-col {
+    width: 110px;
+    text-align: center;
+    white-space: nowrap;
+    font-size: 11px;
+  }
 
-/* Date */
-.date-col {
-  width: 96px;
-  text-align: center;
-  font-size: 11px;
-  white-space: nowrap;
-}
+  /* Date */
+  .date-col {
+    width: 96px;
+    text-align: center;
+    font-size: 11px;
+    white-space: nowrap;
+  }
 
-/* Player link glow (MKDS style) */
-.player-col a {
-  color: #ffe28a;
-  text-decoration: none;
-  transition: color 120ms ease, text-shadow 120ms ease;
-}
+  /* Player link glow (MKDS style) */
+  .player-col a {
+    color: #ffe28a;
+    text-decoration: none;
+    transition: color 120ms ease, text-shadow 120ms ease;
+  }
 
-.player-col a:hover {
-  color: #fff2b8;
-  text-shadow: 0 0 8px rgba(255, 226, 138, 0.7);
-  text-decoration: underline;
-}
-
-
-
+  .player-col a:hover {
+    color: #fff2b8;
+    text-shadow: 0 0 8px rgba(255, 226, 138, 0.7);
+    text-decoration: underline;
+  }
 </style>
 </head>
+
 <body>
 
 <div class="top-nav">
@@ -209,15 +207,15 @@ table.leaderboard {
     </div>
 
     <table id="leaderboard">
-<thead>
-  <tr>
-    <th class="rank-col">Rank</th>
-    <th class="player-col">Player</th>
-    <th class="time-col">Time</th>
-    <th class="std-col">Std</th>
-    <th class="date-col">Date</th>
-  </tr>
-</thead>
+      <thead>
+        <tr>
+          <th class="rank-col">Rank</th>
+          <th class="player-col">Player</th>
+          <th class="time-col">Time</th>
+          <th class="std-col">Std</th>
+          <th class="date-col">Date</th>
+        </tr>
+      </thead>
 
       <tbody>
         <tr id="loadingRow">
@@ -245,6 +243,35 @@ function parseTimeToSeconds(t) {
   const ss = Number(s);
   if (Number.isNaN(mm) || Number.isNaN(ss)) return NaN;
   return mm * 60 + ss;
+}
+
+/**
+ * ✅ Fixes the "-1 day" issue by formatting using LOCAL date parts (not UTC).
+ * Works for:
+ * - ISO strings (from GAS JSON)
+ * - Date-like strings
+ * - numbers (ms since epoch)
+ * - already yyyy-mm-dd strings
+ */
+function formatDateYYYYMMDD(value) {
+  if (!value) return "";
+
+  // If already yyyy-mm-dd, keep as-is
+  if (typeof value === "string") {
+    const s = value.trim();
+    if (/^\d{4}-\d{2}-\d{2}$/.test(s)) return s;
+
+    // ISO string: take the date part, but display in LOCAL time to avoid UTC shifts
+    // We'll still parse it and format locally.
+  }
+
+  const d = new Date(value);
+  if (Number.isNaN(d.getTime())) return "";
+
+  const y = d.getFullYear();
+  const m = String(d.getMonth() + 1).padStart(2, "0");
+  const day = String(d.getDate()).padStart(2, "0");
+  return `${y}-${m}-${day}`;
 }
 
 const TRACK_NAME = getTrackNameFromURL();
@@ -341,28 +368,28 @@ if (!TRACK_NAME) {
     augmented.forEach((row, index) => {
       const std = computeStandard(row.tSec);
       const tr = document.createElement("tr");
+
       tr.innerHTML = `
-  <td class="rank-col">${index + 1}</td>
+        <td class="rank-col">${index + 1}</td>
 
-  <td class="player-col">
-    <a class="track-link"
-       href="player.html?player=${encodeURIComponent(row.player)}"
-       title="${row.player}">
-      ${row.player}
-    </a>
-  </td>
+        <td class="player-col">
+          <a class="player-link"
+             href="player.html?player=${encodeURIComponent(row.player)}"
+             title="${row.player}">
+            ${row.player}
+          </a>
+        </td>
 
-  <td class="time-col">${row.time || ""}</td>
+        <td class="time-col">${row.time || ""}</td>
 
-  <td class="std-col" title="${std.label}">
-    ${std.code}
-  </td>
+        <td class="std-col" title="${std.label}">
+          ${std.code}
+        </td>
 
-  <td class="date-col">
-    ${row.ts ? new Date(row.ts).toISOString().slice(0,10) : ""}
-  </td>
-`;
-
+        <td class="date-col">
+          ${formatDateYYYYMMDD(row.ts)}
+        </td>
+      `;
 
       tbody.appendChild(tr);
     });
