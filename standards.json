@@ -1123,187 +1123,187 @@
   ],
   "SNES Ghost Valley 2": [
     {
-      "cutoff": "0:53.200",
+      "cutoff": "0:53.150",
       "code": "GD",
       "label": "God"
     },
     {
-      "cutoff": "0:53.275",
+      "cutoff": "0:53.230",
       "code": "MA",
       "label": "Myth A"
     },
     {
-      "cutoff": "0:53.350",
+      "cutoff": "0:53.310",
       "code": "MB",
       "label": "Myth B"
     },
     {
-      "cutoff": "0:53.425",
+      "cutoff": "0:53.390",
       "code": "MC",
       "label": "Myth C"
     },
     {
-      "cutoff": "0:53.500",
+      "cutoff": "0:53.470",
       "code": "MD",
       "label": "Myth D"
     },
     {
-      "cutoff": "0:53.575",
+      "cutoff": "0:53.550",
       "code": "ME",
       "label": "Myth E"
     },
     {
-      "cutoff": "0:53.700",
+      "cutoff": "0:53.660",
       "code": "TA",
       "label": "Titan A"
     },
     {
-      "cutoff": "0:53.825",
+      "cutoff": "0:53.770",
       "code": "TB",
       "label": "Titan B"
     },
     {
-      "cutoff": "0:53.950",
+      "cutoff": "0:53.880",
       "code": "TC",
       "label": "Titan C"
     },
     {
-      "cutoff": "0:54.075",
+      "cutoff": "0:53.990",
       "code": "TD",
       "label": "Titan D"
     },
     {
-      "cutoff": "0:54.200",
+      "cutoff": "0:54.100",
       "code": "TE",
       "label": "Titan E"
     },
     {
-      "cutoff": "0:54.400",
+      "cutoff": "0:54.280",
       "code": "HA",
       "label": "Hero A"
     },
     {
-      "cutoff": "0:54.600",
+      "cutoff": "0:54.460",
       "code": "HB",
       "label": "Hero B"
     },
     {
-      "cutoff": "0:54.800",
+      "cutoff": "0:54.640",
       "code": "HC",
       "label": "Hero C"
     },
     {
-      "cutoff": "0:55.000",
+      "cutoff": "0:54.820",
       "code": "HD",
       "label": "Hero D"
     },
     {
-      "cutoff": "0:55.200",
+      "cutoff": "0:55.000",
       "code": "HE",
       "label": "Hero E"
     },
     {
-      "cutoff": "0:55.450",
+      "cutoff": "0:55.260",
       "code": "EA",
       "label": "Expert A"
     },
     {
-      "cutoff": "0:55.700",
+      "cutoff": "0:55.520",
       "code": "EB",
       "label": "Expert B"
     },
     {
-      "cutoff": "0:55.950",
+      "cutoff": "0:55.780",
       "code": "EC",
       "label": "Expert C"
     },
     {
-      "cutoff": "0:56.200",
+      "cutoff": "0:56.040",
       "code": "ED",
       "label": "Expert D"
     },
     {
-      "cutoff": "0:56.450",
+      "cutoff": "0:56.300",
       "code": "EE",
       "label": "Expert E"
     },
     {
-      "cutoff": "0:56.850",
+      "cutoff": "0:56.700",
       "code": "AA",
       "label": "Advanced A"
     },
     {
-      "cutoff": "0:57.250",
+      "cutoff": "0:57.100",
       "code": "AB",
       "label": "Advanced B"
     },
     {
-      "cutoff": "0:57.650",
+      "cutoff": "0:57.500",
       "code": "AC",
       "label": "Advanced C"
     },
     {
-      "cutoff": "0:58.050",
+      "cutoff": "0:57.900",
       "code": "AD",
       "label": "Advanced D"
     },
     {
-      "cutoff": "0:58.450",
+      "cutoff": "0:58.300",
       "code": "AE",
       "label": "Advanced E"
     },
     {
-      "cutoff": "0:59.150",
+      "cutoff": "0:58.800",
       "code": "IA",
       "label": "Intermediate A"
     },
     {
-      "cutoff": "0:59.850",
+      "cutoff": "0:59.300",
       "code": "IB",
       "label": "Intermediate B"
     },
     {
-      "cutoff": "1:00.550",
+      "cutoff": "0:59.800",
       "code": "IC",
       "label": "Intermediate C"
     },
     {
-      "cutoff": "1:01.250",
+      "cutoff": "1:00.300",
       "code": "ID",
       "label": "Intermediate D"
     },
     {
-      "cutoff": "1:01.950",
+      "cutoff": "1:00.800",
       "code": "IE",
       "label": "Intermediate E"
     },
     {
-      "cutoff": "1:03.950",
+      "cutoff": "1:01.400",
       "code": "BA",
       "label": "Beginner A"
     },
     {
-      "cutoff": "1:05.950",
+      "cutoff": "1:02.000",
       "code": "BB",
       "label": "Beginner B"
     },
     {
-      "cutoff": "1:07.950",
+      "cutoff": "1:02.600",
       "code": "BC",
       "label": "Beginner C"
     },
     {
-      "cutoff": "1:09.950",
+      "cutoff": "1:03.200",
       "code": "BD",
       "label": "Beginner D"
     },
     {
-      "cutoff": "1:11.950",
+      "cutoff": "1:03.800",
       "code": "BE",
       "label": "Beginner E"
     },
     {
-      "cutoff": "1:13.950",
+      "cutoff": "1:05.000",
       "code": "NB",
       "label": "Newbie"
     }
@@ -5983,184 +5983,189 @@
   ],
   "N64 Mario Raceway": [
     {
-      "cutoff": "1:42.500",
+      "cutoff": "1:42.000",
       "code": "GD",
       "label": "God"
     },
     {
-      "cutoff": "1:42.600",
+      "cutoff": "1:42.120",
       "code": "MA",
       "label": "Myth A"
     },
     {
-      "cutoff": "1:42.700",
+      "cutoff": "1:42.240",
       "code": "MB",
       "label": "Myth B"
     },
     {
-      "cutoff": "1:42.800",
+      "cutoff": "1:42.360",
       "code": "MC",
       "label": "Myth C"
     },
     {
-      "cutoff": "1:42.900",
+      "cutoff": "1:42.480",
       "code": "MD",
       "label": "Myth D"
     },
     {
-      "cutoff": "1:43.000",
+      "cutoff": "1:42.600",
       "code": "ME",
       "label": "Myth E"
     },
     {
-      "cutoff": "1:43.200",
+      "cutoff": "1:42.800",
       "code": "TA",
       "label": "Titan A"
     },
     {
-      "cutoff": "1:43.400",
+      "cutoff": "1:43.000",
       "code": "TB",
       "label": "Titan B"
     },
     {
-      "cutoff": "1:43.600",
+      "cutoff": "1:43.200",
       "code": "TC",
       "label": "Titan C"
     },
     {
-      "cutoff": "1:43.800",
+      "cutoff": "1:43.400",
       "code": "TD",
       "label": "Titan D"
     },
     {
-      "cutoff": "1:44.000",
+      "cutoff": "1:43.600",
       "code": "TE",
       "label": "Titan E"
     },
     {
-      "cutoff": "1:44.300",
+      "cutoff": "1:43.920",
       "code": "HA",
       "label": "Hero A"
     },
     {
-      "cutoff": "1:44.600",
+      "cutoff": "1:44.240",
       "code": "HB",
       "label": "Hero B"
     },
     {
-      "cutoff": "1:44.900",
+      "cutoff": "1:44.560",
       "code": "HC",
       "label": "Hero C"
     },
     {
-      "cutoff": "1:45.200",
+      "cutoff": "1:44.880",
       "code": "HD",
       "label": "Hero D"
     },
     {
-      "cutoff": "1:45.500",
+      "cutoff": "1:45.200",
       "code": "HE",
       "label": "Hero E"
     },
     {
-      "cutoff": "1:45.930",
+      "cutoff": "1:45.650",
       "code": "EA",
       "label": "Expert A"
     },
     {
-      "cutoff": "1:46.360",
+      "cutoff": "1:46.100",
       "code": "EB",
       "label": "Expert B"
     },
     {
-      "cutoff": "1:46.790",
+      "cutoff": "1:46.550",
       "code": "EC",
       "label": "Expert C"
     },
     {
-      "cutoff": "1:47.220",
+      "cutoff": "1:47.000",
       "code": "ED",
       "label": "Expert D"
     },
     {
-      "cutoff": "1:47.650",
+      "cutoff": "1:47.450",
       "code": "EE",
       "label": "Expert E"
     },
     {
-      "cutoff": "1:48.330",
+      "cutoff": "1:48.000",
       "code": "AA",
       "label": "Advanced A"
     },
     {
-      "cutoff": "1:49.010",
+      "cutoff": "1:48.550",
       "code": "AB",
       "label": "Advanced B"
     },
     {
-      "cutoff": "1:49.690",
+      "cutoff": "1:49.100",
       "code": "AC",
       "label": "Advanced C"
     },
     {
-      "cutoff": "1:50.370",
+      "cutoff": "1:49.650",
       "code": "AD",
       "label": "Advanced D"
     },
     {
-      "cutoff": "1:51.050",
+      "cutoff": "1:50.200",
       "code": "AE",
       "label": "Advanced E"
     },
     {
-      "cutoff": "1:52.050",
+      "cutoff": "1:50.900",
       "code": "IA",
       "label": "Intermediate A"
     },
     {
-      "cutoff": "1:53.050",
+      "cutoff": "1:51.600",
       "code": "IB",
       "label": "Intermediate B"
     },
     {
-      "cutoff": "1:54.050",
+      "cutoff": "1:52.300",
       "code": "IC",
       "label": "Intermediate C"
     },
     {
-      "cutoff": "1:55.050",
+      "cutoff": "1:53.000",
       "code": "ID",
       "label": "Intermediate D"
     },
     {
-      "cutoff": "1:56.050",
+      "cutoff": "1:53.700",
       "code": "IE",
       "label": "Intermediate E"
     },
     {
-      "cutoff": "1:58.050",
+      "cutoff": "1:54.500",
       "code": "BA",
       "label": "Beginner A"
     },
     {
-      "cutoff": "2:00.050",
+      "cutoff": "1:55.300",
       "code": "BB",
       "label": "Beginner B"
     },
     {
-      "cutoff": "2:02.050",
+      "cutoff": "1:56.100",
       "code": "BC",
       "label": "Beginner C"
     },
     {
-      "cutoff": "2:04.050",
+      "cutoff": "1:56.900",
       "code": "BD",
       "label": "Beginner D"
     },
     {
-      "cutoff": "2:06.050",
+      "cutoff": "1:57.700",
       "code": "BE",
       "label": "Beginner E"
+    },
+    {
+      "cutoff": "1:58.700",
+      "code": "NB",
+      "label": "Newbie"
     }
   ],
   "N64 Wario Stadium": [
@@ -6352,187 +6357,187 @@
   ],
   "N64 Sherbet Land": [
     {
-      "cutoff": "2:04.800",
+      "cutoff": "2:04.500",
       "code": "GD",
       "label": "God"
     },
     {
-      "cutoff": "2:04.920",
+      "cutoff": "2:04.650",
       "code": "MA",
       "label": "Myth A"
     },
     {
-      "cutoff": "2:05.040",
+      "cutoff": "2:04.800",
       "code": "MB",
       "label": "Myth B"
     },
     {
-      "cutoff": "2:05.160",
+      "cutoff": "2:04.950",
       "code": "MC",
       "label": "Myth C"
     },
     {
-      "cutoff": "2:05.280",
+      "cutoff": "2:05.100",
       "code": "MD",
       "label": "Myth D"
     },
     {
-      "cutoff": "2:05.400",
+      "cutoff": "2:05.250",
       "code": "ME",
       "label": "Myth E"
     },
     {
-      "cutoff": "2:05.640",
+      "cutoff": "2:05.550",
       "code": "TA",
       "label": "Titan A"
     },
     {
-      "cutoff": "2:05.880",
+      "cutoff": "2:05.850",
       "code": "TB",
       "label": "Titan B"
     },
     {
-      "cutoff": "2:06.120",
+      "cutoff": "2:06.150",
       "code": "TC",
       "label": "Titan C"
     },
     {
-      "cutoff": "2:06.360",
+      "cutoff": "2:06.450",
       "code": "TD",
       "label": "Titan D"
     },
     {
-      "cutoff": "2:06.600",
+      "cutoff": "2:06.750",
       "code": "TE",
       "label": "Titan E"
     },
     {
-      "cutoff": "2:06.960",
+      "cutoff": "2:07.200",
       "code": "HA",
       "label": "Hero A"
     },
     {
-      "cutoff": "2:07.320",
+      "cutoff": "2:07.650",
       "code": "HB",
       "label": "Hero B"
     },
     {
-      "cutoff": "2:07.680",
+      "cutoff": "2:08.100",
       "code": "HC",
       "label": "Hero C"
     },
     {
-      "cutoff": "2:08.040",
+      "cutoff": "2:08.550",
       "code": "HD",
       "label": "Hero D"
     },
     {
-      "cutoff": "2:08.400",
+      "cutoff": "2:09.000",
       "code": "HE",
       "label": "Hero E"
     },
     {
-      "cutoff": "2:08.900",
+      "cutoff": "2:09.600",
       "code": "EA",
       "label": "Expert A"
     },
     {
-      "cutoff": "2:09.400",
+      "cutoff": "2:10.200",
       "code": "EB",
       "label": "Expert B"
     },
     {
-      "cutoff": "2:09.900",
+      "cutoff": "2:10.800",
       "code": "EC",
       "label": "Expert C"
     },
     {
-      "cutoff": "2:10.400",
+      "cutoff": "2:11.400",
       "code": "ED",
       "label": "Expert D"
     },
     {
-      "cutoff": "2:10.900",
+      "cutoff": "2:12.000",
       "code": "EE",
       "label": "Expert E"
     },
     {
-      "cutoff": "2:11.650",
+      "cutoff": "2:12.700",
       "code": "AA",
       "label": "Advanced A"
     },
     {
-      "cutoff": "2:12.400",
+      "cutoff": "2:13.400",
       "code": "AB",
       "label": "Advanced B"
     },
     {
-      "cutoff": "2:13.150",
+      "cutoff": "2:14.100",
       "code": "AC",
       "label": "Advanced C"
     },
     {
-      "cutoff": "2:13.900",
+      "cutoff": "2:14.800",
       "code": "AD",
       "label": "Advanced D"
     },
     {
-      "cutoff": "2:14.650",
+      "cutoff": "2:15.500",
       "code": "AE",
       "label": "Advanced E"
     },
     {
-      "cutoff": "2:15.650",
+      "cutoff": "2:16.300",
       "code": "IA",
       "label": "Intermediate A"
     },
     {
-      "cutoff": "2:16.650",
+      "cutoff": "2:17.100",
       "code": "IB",
       "label": "Intermediate B"
     },
     {
-      "cutoff": "2:17.650",
+      "cutoff": "2:17.900",
       "code": "IC",
       "label": "Intermediate C"
     },
     {
-      "cutoff": "2:18.650",
+      "cutoff": "2:18.700",
       "code": "ID",
       "label": "Intermediate D"
     },
     {
-      "cutoff": "2:19.650",
+      "cutoff": "2:19.500",
       "code": "IE",
       "label": "Intermediate E"
     },
     {
-      "cutoff": "2:21.650",
+      "cutoff": "2:20.500",
       "code": "BA",
       "label": "Beginner A"
     },
     {
-      "cutoff": "2:23.650",
+      "cutoff": "2:21.500",
       "code": "BB",
       "label": "Beginner B"
     },
     {
-      "cutoff": "2:25.650",
+      "cutoff": "2:22.500",
       "code": "BC",
       "label": "Beginner C"
     },
     {
-      "cutoff": "2:27.650",
+      "cutoff": "2:23.500",
       "code": "BD",
       "label": "Beginner D"
     },
     {
-      "cutoff": "2:29.650",
+      "cutoff": "2:24.500",
       "code": "BE",
       "label": "Beginner E"
     },
     {
-      "cutoff": "2:31.650",
+      "cutoff": "2:25.500",
       "code": "NB",
       "label": "Newbie"
     }
@@ -6726,374 +6731,374 @@
   ],
   "N64 Bowser's Castle": [
     {
-      "cutoff": "2:31.900",
+      "cutoff": "2:31.800",
       "code": "GD",
       "label": "God"
     },
     {
-      "cutoff": "2:32.050",
+      "cutoff": "2:31.950",
       "code": "MA",
       "label": "Myth A"
     },
     {
-      "cutoff": "2:32.200",
+      "cutoff": "2:32.100",
       "code": "MB",
       "label": "Myth B"
     },
     {
-      "cutoff": "2:32.350",
+      "cutoff": "2:32.250",
       "code": "MC",
       "label": "Myth C"
     },
     {
-      "cutoff": "2:32.500",
+      "cutoff": "2:32.400",
       "code": "MD",
       "label": "Myth D"
     },
     {
-      "cutoff": "2:32.650",
+      "cutoff": "2:32.550",
       "code": "ME",
       "label": "Myth E"
     },
     {
-      "cutoff": "2:32.950",
+      "cutoff": "2:32.800",
       "code": "TA",
       "label": "Titan A"
     },
     {
-      "cutoff": "2:33.250",
+      "cutoff": "2:33.050",
       "code": "TB",
       "label": "Titan B"
     },
     {
-      "cutoff": "2:33.550",
+      "cutoff": "2:33.300",
       "code": "TC",
       "label": "Titan C"
     },
     {
-      "cutoff": "2:33.850",
+      "cutoff": "2:33.550",
       "code": "TD",
       "label": "Titan D"
     },
     {
-      "cutoff": "2:34.150",
+      "cutoff": "2:33.800",
       "code": "TE",
       "label": "Titan E"
     },
     {
-      "cutoff": "2:34.600",
+      "cutoff": "2:34.200",
       "code": "HA",
       "label": "Hero A"
     },
     {
-      "cutoff": "2:35.050",
+      "cutoff": "2:34.600",
       "code": "HB",
       "label": "Hero B"
     },
     {
-      "cutoff": "2:35.500",
+      "cutoff": "2:35.000",
       "code": "HC",
       "label": "Hero C"
     },
     {
-      "cutoff": "2:35.950",
+      "cutoff": "2:35.400",
       "code": "HD",
       "label": "Hero D"
     },
     {
-      "cutoff": "2:36.400",
+      "cutoff": "2:35.800",
       "code": "HE",
       "label": "Hero E"
     },
     {
-      "cutoff": "2:36.900",
+      "cutoff": "2:36.350",
       "code": "EA",
       "label": "Expert A"
     },
     {
-      "cutoff": "2:37.400",
+      "cutoff": "2:36.900",
       "code": "EB",
       "label": "Expert B"
     },
     {
-      "cutoff": "2:37.900",
+      "cutoff": "2:37.450",
       "code": "EC",
       "label": "Expert C"
     },
     {
-      "cutoff": "2:38.400",
+      "cutoff": "2:38.000",
       "code": "ED",
       "label": "Expert D"
     },
     {
-      "cutoff": "2:38.900",
+      "cutoff": "2:38.550",
       "code": "EE",
       "label": "Expert E"
     },
     {
-      "cutoff": "2:39.650",
+      "cutoff": "2:39.300",
       "code": "AA",
       "label": "Advanced A"
     },
     {
-      "cutoff": "2:40.400",
+      "cutoff": "2:40.050",
       "code": "AB",
       "label": "Advanced B"
     },
     {
-      "cutoff": "2:41.150",
+      "cutoff": "2:40.800",
       "code": "AC",
       "label": "Advanced C"
     },
     {
-      "cutoff": "2:41.900",
+      "cutoff": "2:41.550",
       "code": "AD",
       "label": "Advanced D"
     },
     {
-      "cutoff": "2:42.650",
+      "cutoff": "2:42.300",
       "code": "AE",
       "label": "Advanced E"
     },
     {
-      "cutoff": "2:43.650",
+      "cutoff": "2:43.200",
       "code": "IA",
       "label": "Intermediate A"
     },
     {
-      "cutoff": "2:44.650",
+      "cutoff": "2:44.100",
       "code": "IB",
       "label": "Intermediate B"
     },
     {
-      "cutoff": "2:45.650",
+      "cutoff": "2:45.000",
       "code": "IC",
       "label": "Intermediate C"
     },
     {
-      "cutoff": "2:46.650",
+      "cutoff": "2:45.900",
       "code": "ID",
       "label": "Intermediate D"
     },
     {
-      "cutoff": "2:47.650",
+      "cutoff": "2:46.800",
       "code": "IE",
       "label": "Intermediate E"
     },
     {
-      "cutoff": "2:49.650",
+      "cutoff": "2:48.000",
       "code": "BA",
       "label": "Beginner A"
     },
     {
-      "cutoff": "2:51.650",
+      "cutoff": "2:49.200",
       "code": "BB",
       "label": "Beginner B"
     },
     {
-      "cutoff": "2:53.650",
+      "cutoff": "2:50.400",
       "code": "BC",
       "label": "Beginner C"
     },
     {
-      "cutoff": "2:55.650",
+      "cutoff": "2:51.600",
       "code": "BD",
       "label": "Beginner D"
     },
     {
-      "cutoff": "2:57.650",
+      "cutoff": "2:52.800",
       "code": "BE",
       "label": "Beginner E"
     },
     {
-      "cutoff": "3:00.000",
+      "cutoff": "2:54.000",
       "code": "NB",
       "label": "Newbie"
     }
   ],
   "N64 DK's Jungle Parkway": [
     {
-      "cutoff": "2:14.000",
+      "cutoff": "2:13.250",
       "code": "GD",
       "label": "God"
     },
     {
-      "cutoff": "2:14.150",
+      "cutoff": "2:13.400",
       "code": "MA",
       "label": "Myth A"
     },
     {
-      "cutoff": "2:14.300",
+      "cutoff": "2:13.550",
       "code": "MB",
       "label": "Myth B"
     },
     {
-      "cutoff": "2:14.450",
+      "cutoff": "2:13.700",
       "code": "MC",
       "label": "Myth C"
     },
     {
-      "cutoff": "2:14.600",
+      "cutoff": "2:13.850",
       "code": "MD",
       "label": "Myth D"
     },
     {
-      "cutoff": "2:14.750",
+      "cutoff": "2:14.000",
       "code": "ME",
       "label": "Myth E"
     },
     {
-      "cutoff": "2:15.050",
+      "cutoff": "2:14.250",
       "code": "TA",
       "label": "Titan A"
     },
     {
-      "cutoff": "2:15.350",
+      "cutoff": "2:14.500",
       "code": "TB",
       "label": "Titan B"
     },
     {
-      "cutoff": "2:15.650",
+      "cutoff": "2:14.750",
       "code": "TC",
       "label": "Titan C"
     },
     {
-      "cutoff": "2:15.950",
+      "cutoff": "2:15.000",
       "code": "TD",
       "label": "Titan D"
     },
     {
-      "cutoff": "2:16.250",
+      "cutoff": "2:15.250",
       "code": "TE",
       "label": "Titan E"
     },
     {
-      "cutoff": "2:16.700",
+      "cutoff": "2:15.600",
       "code": "HA",
       "label": "Hero A"
     },
     {
-      "cutoff": "2:17.150",
+      "cutoff": "2:15.950",
       "code": "HB",
       "label": "Hero B"
     },
     {
-      "cutoff": "2:17.600",
+      "cutoff": "2:16.300",
       "code": "HC",
       "label": "Hero C"
     },
     {
-      "cutoff": "2:18.050",
+      "cutoff": "2:16.650",
       "code": "HD",
       "label": "Hero D"
     },
     {
-      "cutoff": "2:18.500",
+      "cutoff": "2:17.000",
       "code": "HE",
       "label": "Hero E"
     },
     {
-      "cutoff": "2:19.000",
+      "cutoff": "2:17.500",
       "code": "EA",
       "label": "Expert A"
     },
     {
-      "cutoff": "2:19.500",
+      "cutoff": "2:18.000",
       "code": "EB",
       "label": "Expert B"
     },
     {
-      "cutoff": "2:20.000",
+      "cutoff": "2:18.500",
       "code": "EC",
       "label": "Expert C"
     },
     {
-      "cutoff": "2:20.500",
+      "cutoff": "2:19.000",
       "code": "ED",
       "label": "Expert D"
     },
     {
-      "cutoff": "2:21.000",
+      "cutoff": "2:19.500",
       "code": "EE",
       "label": "Expert E"
     },
     {
-      "cutoff": "2:21.750",
+      "cutoff": "2:20.200",
       "code": "AA",
       "label": "Advanced A"
     },
     {
-      "cutoff": "2:22.500",
+      "cutoff": "2:20.900",
       "code": "AB",
       "label": "Advanced B"
     },
     {
-      "cutoff": "2:23.250",
+      "cutoff": "2:21.600",
       "code": "AC",
       "label": "Advanced C"
     },
     {
-      "cutoff": "2:24.000",
+      "cutoff": "2:22.300",
       "code": "AD",
       "label": "Advanced D"
     },
     {
-      "cutoff": "2:24.750",
+      "cutoff": "2:23.000",
       "code": "AE",
       "label": "Advanced E"
     },
     {
-      "cutoff": "2:25.750",
+      "cutoff": "2:23.900",
       "code": "IA",
       "label": "Intermediate A"
     },
     {
-      "cutoff": "2:26.750",
+      "cutoff": "2:24.800",
       "code": "IB",
       "label": "Intermediate B"
     },
     {
-      "cutoff": "2:27.750",
+      "cutoff": "2:25.700",
       "code": "IC",
       "label": "Intermediate C"
     },
     {
-      "cutoff": "2:28.750",
+      "cutoff": "2:26.600",
       "code": "ID",
       "label": "Intermediate D"
     },
     {
-      "cutoff": "2:29.750",
+      "cutoff": "2:27.500",
       "code": "IE",
       "label": "Intermediate E"
     },
     {
-      "cutoff": "2:31.750",
+      "cutoff": "2:28.500",
       "code": "BA",
       "label": "Beginner A"
     },
     {
-      "cutoff": "2:33.750",
+      "cutoff": "2:29.500",
       "code": "BB",
       "label": "Beginner B"
     },
     {
-      "cutoff": "2:35.750",
+      "cutoff": "2:30.500",
       "code": "BC",
       "label": "Beginner C"
     },
     {
-      "cutoff": "2:37.750",
+      "cutoff": "2:31.500",
       "code": "BD",
       "label": "Beginner D"
     },
     {
-      "cutoff": "2:39.750",
+      "cutoff": "2:32.500",
       "code": "BE",
       "label": "Beginner E"
     },
     {
-      "cutoff": "2:42.000",
+      "cutoff": "2:33.500",
       "code": "NB",
       "label": "Newbie"
     }
@@ -8035,187 +8040,187 @@
   ],
   "GBA Shy Guy Beach": [
     {
-      "cutoff": "1:22.750",
+      "cutoff": "1:22.600",
       "code": "GD",
       "label": "God"
     },
     {
-      "cutoff": "1:22.850",
+      "cutoff": "1:22.700",
       "code": "MA",
       "label": "Myth A"
     },
     {
-      "cutoff": "1:22.950",
+      "cutoff": "1:22.800",
       "code": "MB",
       "label": "Myth B"
     },
     {
-      "cutoff": "1:23.050",
+      "cutoff": "1:22.900",
       "code": "MC",
       "label": "Myth C"
     },
     {
-      "cutoff": "1:23.150",
+      "cutoff": "1:23.000",
       "code": "MD",
       "label": "Myth D"
     },
     {
-      "cutoff": "1:23.250",
+      "cutoff": "1:23.100",
       "code": "ME",
       "label": "Myth E"
     },
     {
-      "cutoff": "1:23.475",
+      "cutoff": "1:23.300",
       "code": "TA",
       "label": "Titan A"
     },
     {
-      "cutoff": "1:23.700",
+      "cutoff": "1:23.500",
       "code": "TB",
       "label": "Titan B"
     },
     {
-      "cutoff": "1:23.925",
+      "cutoff": "1:23.700",
       "code": "TC",
       "label": "Titan C"
     },
     {
-      "cutoff": "1:24.150",
+      "cutoff": "1:23.900",
       "code": "TD",
       "label": "Titan D"
     },
     {
-      "cutoff": "1:24.375",
+      "cutoff": "1:24.100",
       "code": "TE",
       "label": "Titan E"
     },
     {
-      "cutoff": "1:24.720",
+      "cutoff": "1:24.420",
       "code": "HA",
       "label": "Hero A"
     },
     {
-      "cutoff": "1:25.065",
+      "cutoff": "1:24.740",
       "code": "HB",
       "label": "Hero B"
     },
     {
-      "cutoff": "1:25.410",
+      "cutoff": "1:25.060",
       "code": "HC",
       "label": "Hero C"
     },
     {
-      "cutoff": "1:25.755",
+      "cutoff": "1:25.380",
       "code": "HD",
       "label": "Hero D"
     },
     {
-      "cutoff": "1:26.100",
+      "cutoff": "1:25.700",
       "code": "HE",
       "label": "Hero E"
     },
     {
-      "cutoff": "1:26.550",
+      "cutoff": "1:26.140",
       "code": "EA",
       "label": "Expert A"
     },
     {
-      "cutoff": "1:27.000",
+      "cutoff": "1:26.580",
       "code": "EB",
       "label": "Expert B"
     },
     {
-      "cutoff": "1:27.450",
+      "cutoff": "1:27.020",
       "code": "EC",
       "label": "Expert C"
     },
     {
-      "cutoff": "1:27.900",
+      "cutoff": "1:27.460",
       "code": "ED",
       "label": "Expert D"
     },
     {
-      "cutoff": "1:28.350",
+      "cutoff": "1:27.900",
       "code": "EE",
       "label": "Expert E"
     },
     {
-      "cutoff": "1:28.950",
+      "cutoff": "1:28.500",
       "code": "AA",
       "label": "Advanced A"
     },
     {
-      "cutoff": "1:29.550",
+      "cutoff": "1:29.100",
       "code": "AB",
       "label": "Advanced B"
     },
     {
-      "cutoff": "1:30.150",
+      "cutoff": "1:29.700",
       "code": "AC",
       "label": "Advanced C"
     },
     {
-      "cutoff": "1:30.750",
+      "cutoff": "1:30.300",
       "code": "AD",
       "label": "Advanced D"
     },
     {
-      "cutoff": "1:31.350",
+      "cutoff": "1:30.900",
       "code": "AE",
       "label": "Advanced E"
     },
     {
-      "cutoff": "1:32.350",
+      "cutoff": "1:31.700",
       "code": "IA",
       "label": "Intermediate A"
     },
     {
-      "cutoff": "1:33.350",
+      "cutoff": "1:32.500",
       "code": "IB",
       "label": "Intermediate B"
     },
     {
-      "cutoff": "1:34.350",
+      "cutoff": "1:33.300",
       "code": "IC",
       "label": "Intermediate C"
     },
     {
-      "cutoff": "1:35.350",
+      "cutoff": "1:34.100",
       "code": "ID",
       "label": "Intermediate D"
     },
     {
-      "cutoff": "1:36.350",
+      "cutoff": "1:34.900",
       "code": "IE",
       "label": "Intermediate E"
     },
     {
-      "cutoff": "1:38.350",
+      "cutoff": "1:35.900",
       "code": "BA",
       "label": "Beginner A"
     },
     {
-      "cutoff": "1:40.350",
+      "cutoff": "1:36.900",
       "code": "BB",
       "label": "Beginner B"
     },
     {
-      "cutoff": "1:42.350",
+      "cutoff": "1:37.900",
       "code": "BC",
       "label": "Beginner C"
     },
     {
-      "cutoff": "1:44.350",
+      "cutoff": "1:38.900",
       "code": "BD",
       "label": "Beginner D"
     },
     {
-      "cutoff": "1:46.350",
+      "cutoff": "1:39.900",
       "code": "BE",
       "label": "Beginner E"
     },
     {
-      "cutoff": "1:48.350",
+      "cutoff": "1:41.000",
       "code": "NB",
       "label": "Newbie"
     }
@@ -12710,147 +12715,147 @@
   ],
   "GCN Daisy Cruiser": [
     {
-      "cutoff": "1:33.800",
+      "cutoff": "1:35.250",
       "code": "GD",
       "label": "God"
     },
     {
-      "cutoff": "1:33.900",
+      "cutoff": "1:35.400",
       "code": "MA",
       "label": "Myth A"
     },
     {
-      "cutoff": "1:34.000",
+      "cutoff": "1:35.550",
       "code": "MB",
       "label": "Myth B"
     },
     {
-      "cutoff": "1:34.100",
+      "cutoff": "1:35.700",
       "code": "MC",
       "label": "Myth C"
     },
     {
-      "cutoff": "1:34.200",
+      "cutoff": "1:35.850",
       "code": "MD",
       "label": "Myth D"
     },
     {
-      "cutoff": "1:34.300",
+      "cutoff": "1:36.000",
       "code": "ME",
       "label": "Myth E"
     },
     {
-      "cutoff": "1:34.500",
+      "cutoff": "1:36.220",
       "code": "TA",
       "label": "Titan A"
     },
     {
-      "cutoff": "1:34.700",
+      "cutoff": "1:36.440",
       "code": "TB",
       "label": "Titan B"
     },
     {
-      "cutoff": "1:34.900",
+      "cutoff": "1:36.660",
       "code": "TC",
       "label": "Titan C"
     },
     {
-      "cutoff": "1:35.100",
+      "cutoff": "1:36.880",
       "code": "TD",
       "label": "Titan D"
     },
     {
-      "cutoff": "1:35.300",
+      "cutoff": "1:37.100",
       "code": "TE",
       "label": "Titan E"
     },
     {
-      "cutoff": "1:35.600",
+      "cutoff": "1:37.400",
       "code": "HA",
       "label": "Hero A"
     },
     {
-      "cutoff": "1:35.900",
+      "cutoff": "1:37.700",
       "code": "HB",
       "label": "Hero B"
     },
     {
-      "cutoff": "1:36.200",
+      "cutoff": "1:38.000",
       "code": "HC",
       "label": "Hero C"
     },
     {
-      "cutoff": "1:36.500",
+      "cutoff": "1:38.300",
       "code": "HD",
       "label": "Hero D"
     },
     {
-      "cutoff": "1:36.800",
+      "cutoff": "1:38.600",
       "code": "HE",
       "label": "Hero E"
     },
     {
-      "cutoff": "1:37.300",
+      "cutoff": "1:39.050",
       "code": "EA",
       "label": "Expert A"
     },
     {
-      "cutoff": "1:37.800",
+      "cutoff": "1:39.500",
       "code": "EB",
       "label": "Expert B"
     },
     {
-      "cutoff": "1:38.300",
+      "cutoff": "1:39.950",
       "code": "EC",
       "label": "Expert C"
     },
     {
-      "cutoff": "1:38.800",
+      "cutoff": "1:40.400",
       "code": "ED",
       "label": "Expert D"
     },
     {
-      "cutoff": "1:39.300",
+      "cutoff": "1:40.850",
       "code": "EE",
       "label": "Expert E"
     },
     {
-      "cutoff": "1:40.000",
+      "cutoff": "1:41.400",
       "code": "AA",
       "label": "Advanced A"
     },
     {
-      "cutoff": "1:40.700",
+      "cutoff": "1:41.950",
       "code": "AB",
       "label": "Advanced B"
     },
     {
-      "cutoff": "1:41.400",
+      "cutoff": "1:42.500",
       "code": "AC",
       "label": "Advanced C"
     },
     {
-      "cutoff": "1:42.100",
+      "cutoff": "1:43.050",
       "code": "AD",
       "label": "Advanced D"
     },
     {
-      "cutoff": "1:42.800",
+      "cutoff": "1:43.600",
       "code": "AE",
       "label": "Advanced E"
     },
     {
-      "cutoff": "1:43.700",
+      "cutoff": "1:44.300",
       "code": "IA",
       "label": "Intermediate A"
     },
     {
-      "cutoff": "1:44.600",
+      "cutoff": "1:45.000",
       "code": "IB",
       "label": "Intermediate B"
     },
     {
-      "cutoff": "1:45.500",
+      "cutoff": "1:45.700",
       "code": "IC",
       "label": "Intermediate C"
     },
@@ -12860,37 +12865,37 @@
       "label": "Intermediate D"
     },
     {
-      "cutoff": "1:47.300",
+      "cutoff": "1:47.100",
       "code": "IE",
       "label": "Intermediate E"
     },
     {
-      "cutoff": "1:48.300",
+      "cutoff": "1:48.000",
       "code": "BA",
       "label": "Beginner A"
     },
     {
-      "cutoff": "1:49.300",
+      "cutoff": "1:48.900",
       "code": "BB",
       "label": "Beginner B"
     },
     {
-      "cutoff": "1:50.300",
+      "cutoff": "1:49.800",
       "code": "BC",
       "label": "Beginner C"
     },
     {
-      "cutoff": "1:51.300",
+      "cutoff": "1:50.700",
       "code": "BD",
       "label": "Beginner D"
     },
     {
-      "cutoff": "1:52.300",
+      "cutoff": "1:51.600",
       "code": "BE",
       "label": "Beginner E"
     },
     {
-      "cutoff": "1:54.300",
+      "cutoff": "1:52.600",
       "code": "NB",
       "label": "Newbie"
     }
@@ -14767,187 +14772,187 @@
   ],
   "DS Yoshi Falls": [
     {
-      "cutoff": "0:59.960",
+      "cutoff": "0:59.400",
       "code": "GD",
       "label": "God"
     },
     {
-      "cutoff": "1:00.140",
+      "cutoff": "0:59.490",
       "code": "MA",
       "label": "Myth A"
     },
     {
-      "cutoff": "1:00.320",
+      "cutoff": "0:59.580",
       "code": "MB",
       "label": "Myth B"
     },
     {
-      "cutoff": "1:00.500",
+      "cutoff": "0:59.670",
       "code": "MC",
       "label": "Myth C"
     },
     {
-      "cutoff": "1:00.680",
+      "cutoff": "0:59.760",
       "code": "MD",
       "label": "Myth D"
     },
     {
-      "cutoff": "1:00.860",
+      "cutoff": "0:59.850",
       "code": "ME",
       "label": "Myth E"
     },
     {
-      "cutoff": "1:01.060",
+      "cutoff": "1:00.010",
       "code": "TA",
       "label": "Titan A"
     },
     {
-      "cutoff": "1:01.260",
+      "cutoff": "1:00.170",
       "code": "TB",
       "label": "Titan B"
     },
     {
-      "cutoff": "1:01.460",
+      "cutoff": "1:00.330",
       "code": "TC",
       "label": "Titan C"
     },
     {
-      "cutoff": "1:01.660",
+      "cutoff": "1:00.490",
       "code": "TD",
       "label": "Titan D"
     },
     {
-      "cutoff": "1:01.860",
+      "cutoff": "1:00.650",
       "code": "TE",
       "label": "Titan E"
     },
     {
-      "cutoff": "1:02.120",
+      "cutoff": "1:00.870",
       "code": "HA",
       "label": "Hero A"
     },
     {
-      "cutoff": "1:02.380",
+      "cutoff": "1:01.090",
       "code": "HB",
       "label": "Hero B"
     },
     {
-      "cutoff": "1:02.640",
+      "cutoff": "1:01.310",
       "code": "HC",
       "label": "Hero C"
     },
     {
-      "cutoff": "1:02.900",
+      "cutoff": "1:01.530",
       "code": "HD",
       "label": "Hero D"
     },
     {
-      "cutoff": "1:03.160",
+      "cutoff": "1:01.750",
       "code": "HE",
       "label": "Hero E"
     },
     {
-      "cutoff": "1:03.540",
+      "cutoff": "1:02.050",
       "code": "EA",
       "label": "Expert A"
     },
     {
-      "cutoff": "1:03.920",
+      "cutoff": "1:02.350",
       "code": "EB",
       "label": "Expert B"
     },
     {
-      "cutoff": "1:04.300",
+      "cutoff": "1:02.650",
       "code": "EC",
       "label": "Expert C"
     },
     {
-      "cutoff": "1:04.680",
+      "cutoff": "1:02.950",
       "code": "ED",
       "label": "Expert D"
     },
     {
-      "cutoff": "1:05.060",
+      "cutoff": "1:03.250",
       "code": "EE",
       "label": "Expert E"
     },
     {
-      "cutoff": "1:05.560",
+      "cutoff": "1:03.700",
       "code": "AA",
       "label": "Advanced A"
     },
     {
-      "cutoff": "1:06.060",
+      "cutoff": "1:04.150",
       "code": "AB",
       "label": "Advanced B"
     },
     {
-      "cutoff": "1:06.560",
+      "cutoff": "1:04.600",
       "code": "AC",
       "label": "Advanced C"
     },
     {
-      "cutoff": "1:07.060",
+      "cutoff": "1:05.050",
       "code": "AD",
       "label": "Advanced D"
     },
     {
-      "cutoff": "1:07.560",
+      "cutoff": "1:05.500",
       "code": "AE",
       "label": "Advanced E"
     },
     {
-      "cutoff": "1:08.260",
+      "cutoff": "1:06.100",
       "code": "IA",
       "label": "Intermediate A"
     },
     {
-      "cutoff": "1:08.960",
+      "cutoff": "1:06.700",
       "code": "IB",
       "label": "Intermediate B"
     },
     {
-      "cutoff": "1:09.660",
+      "cutoff": "1:07.300",
       "code": "IC",
       "label": "Intermediate C"
     },
     {
-      "cutoff": "1:10.360",
+      "cutoff": "1:07.900",
       "code": "ID",
       "label": "Intermediate D"
     },
     {
-      "cutoff": "1:11.060",
+      "cutoff": "1:08.500",
       "code": "IE",
       "label": "Intermediate E"
     },
     {
-      "cutoff": "1:12.060",
+      "cutoff": "1:09.300",
       "code": "BA",
       "label": "Beginner A"
     },
     {
-      "cutoff": "1:13.060",
+      "cutoff": "1:10.100",
       "code": "BB",
       "label": "Beginner B"
     },
     {
-      "cutoff": "1:14.060",
+      "cutoff": "1:10.900",
       "code": "BC",
       "label": "Beginner C"
     },
     {
-      "cutoff": "1:15.060",
+      "cutoff": "1:11.700",
       "code": "BD",
       "label": "Beginner D"
     },
     {
-      "cutoff": "1:16.060",
+      "cutoff": "1:12.500",
       "code": "BE",
       "label": "Beginner E"
     },
     {
-      "cutoff": "1:18.000",
+      "cutoff": "1:13.500",
       "code": "NB",
       "label": "Newbie"
     }
@@ -16450,187 +16455,187 @@
   ],
   "DS Mario Circuit": [
     {
-      "cutoff": "1:45.000",
+      "cutoff": "1:43.200",
       "code": "GD",
       "label": "God"
     },
     {
-      "cutoff": "1:45.150",
+      "cutoff": "1:43.330",
       "code": "MA",
       "label": "Myth A"
     },
     {
-      "cutoff": "1:45.300",
+      "cutoff": "1:43.460",
       "code": "MB",
       "label": "Myth B"
     },
     {
-      "cutoff": "1:45.450",
+      "cutoff": "1:43.590",
       "code": "MC",
       "label": "Myth C"
     },
     {
-      "cutoff": "1:45.600",
+      "cutoff": "1:43.720",
       "code": "MD",
       "label": "Myth D"
     },
     {
-      "cutoff": "1:45.750",
+      "cutoff": "1:43.850",
       "code": "ME",
       "label": "Myth E"
     },
     {
-      "cutoff": "1:46.000",
+      "cutoff": "1:44.080",
       "code": "TA",
       "label": "Titan A"
     },
     {
-      "cutoff": "1:46.250",
+      "cutoff": "1:44.310",
       "code": "TB",
       "label": "Titan B"
     },
     {
-      "cutoff": "1:46.500",
+      "cutoff": "1:44.540",
       "code": "TC",
       "label": "Titan C"
     },
     {
-      "cutoff": "1:46.750",
+      "cutoff": "1:44.770",
       "code": "TD",
       "label": "Titan D"
     },
     {
-      "cutoff": "1:47.000",
+      "cutoff": "1:45.000",
       "code": "TE",
       "label": "Titan E"
     },
     {
-      "cutoff": "1:47.400",
+      "cutoff": "1:45.350",
       "code": "HA",
       "label": "Hero A"
     },
     {
-      "cutoff": "1:47.800",
+      "cutoff": "1:45.700",
       "code": "HB",
       "label": "Hero B"
     },
     {
-      "cutoff": "1:48.200",
+      "cutoff": "1:46.050",
       "code": "HC",
       "label": "Hero C"
     },
     {
-      "cutoff": "1:48.600",
+      "cutoff": "1:46.400",
       "code": "HD",
       "label": "Hero D"
     },
     {
-      "cutoff": "1:49.000",
+      "cutoff": "1:46.750",
       "code": "HE",
       "label": "Hero E"
     },
     {
-      "cutoff": "1:49.600",
+      "cutoff": "1:47.250",
       "code": "EA",
       "label": "Expert A"
     },
     {
-      "cutoff": "1:50.200",
+      "cutoff": "1:47.750",
       "code": "EB",
       "label": "Expert B"
     },
     {
-      "cutoff": "1:50.800",
+      "cutoff": "1:48.250",
       "code": "EC",
       "label": "Expert C"
     },
     {
-      "cutoff": "1:51.400",
+      "cutoff": "1:48.750",
       "code": "ED",
       "label": "Expert D"
     },
     {
-      "cutoff": "1:52.000",
+      "cutoff": "1:49.250",
       "code": "EE",
       "label": "Expert E"
     },
     {
-      "cutoff": "1:52.800",
+      "cutoff": "1:49.900",
       "code": "AA",
       "label": "Advanced A"
     },
     {
-      "cutoff": "1:53.600",
+      "cutoff": "1:50.550",
       "code": "AB",
       "label": "Advanced B"
     },
     {
-      "cutoff": "1:54.400",
+      "cutoff": "1:51.200",
       "code": "AC",
       "label": "Advanced C"
     },
     {
-      "cutoff": "1:55.200",
+      "cutoff": "1:51.850",
       "code": "AD",
       "label": "Advanced D"
     },
     {
-      "cutoff": "1:56.000",
+      "cutoff": "1:52.500",
       "code": "AE",
       "label": "Advanced E"
     },
     {
-      "cutoff": "1:57.100",
+      "cutoff": "1:53.300",
       "code": "IA",
       "label": "Intermediate A"
     },
     {
-      "cutoff": "1:58.200",
+      "cutoff": "1:54.100",
       "code": "IB",
       "label": "Intermediate B"
     },
     {
-      "cutoff": "1:59.300",
+      "cutoff": "1:54.900",
       "code": "IC",
       "label": "Intermediate C"
     },
     {
-      "cutoff": "2:00.400",
+      "cutoff": "1:55.700",
       "code": "ID",
       "label": "Intermediate D"
     },
     {
-      "cutoff": "2:01.500",
+      "cutoff": "1:56.500",
       "code": "IE",
       "label": "Intermediate E"
     },
     {
-      "cutoff": "2:02.500",
+      "cutoff": "1:57.400",
       "code": "BA",
       "label": "Beginner A"
     },
     {
-      "cutoff": "2:03.500",
+      "cutoff": "1:58.300",
       "code": "BB",
       "label": "Beginner B"
     },
     {
-      "cutoff": "2:04.500",
+      "cutoff": "1:59.200",
       "code": "BC",
       "label": "Beginner C"
     },
     {
-      "cutoff": "2:05.500",
+      "cutoff": "2:00.100",
       "code": "BD",
       "label": "Beginner D"
     },
     {
-      "cutoff": "2:06.500",
+      "cutoff": "2:01.000",
       "code": "BE",
       "label": "Beginner E"
     },
     {
-      "cutoff": "2:08.500",
+      "cutoff": "2:02.000",
       "code": "NB",
       "label": "Newbie"
     }
@@ -21312,187 +21317,187 @@
   ],
   "3DS Wuhu Loop": [
     {
-      "cutoff": "1:21.400",
+      "cutoff": "1:18.500",
       "code": "GD",
       "label": "God"
     },
     {
-      "cutoff": "1:21.500",
+      "cutoff": "1:18.610",
       "code": "MA",
       "label": "Myth A"
     },
     {
-      "cutoff": "1:21.600",
+      "cutoff": "1:18.720",
       "code": "MB",
       "label": "Myth B"
     },
     {
-      "cutoff": "1:21.700",
+      "cutoff": "1:18.830",
       "code": "MC",
       "label": "Myth C"
     },
     {
-      "cutoff": "1:21.800",
+      "cutoff": "1:18.940",
       "code": "MD",
       "label": "Myth D"
     },
     {
-      "cutoff": "1:21.900",
+      "cutoff": "1:19.050",
       "code": "ME",
       "label": "Myth E"
     },
     {
-      "cutoff": "1:22.100",
+      "cutoff": "1:19.280",
       "code": "TA",
       "label": "Titan A"
     },
     {
-      "cutoff": "1:22.300",
+      "cutoff": "1:19.510",
       "code": "TB",
       "label": "Titan B"
     },
     {
-      "cutoff": "1:22.500",
+      "cutoff": "1:19.740",
       "code": "TC",
       "label": "Titan C"
     },
     {
-      "cutoff": "1:22.700",
+      "cutoff": "1:19.970",
       "code": "TD",
       "label": "Titan D"
     },
     {
-      "cutoff": "1:22.900",
+      "cutoff": "1:20.200",
       "code": "TE",
       "label": "Titan E"
     },
     {
-      "cutoff": "1:23.200",
+      "cutoff": "1:20.550",
       "code": "HA",
       "label": "Hero A"
     },
     {
-      "cutoff": "1:23.500",
+      "cutoff": "1:20.900",
       "code": "HB",
       "label": "Hero B"
     },
     {
-      "cutoff": "1:23.800",
+      "cutoff": "1:21.250",
       "code": "HC",
       "label": "Hero C"
     },
     {
-      "cutoff": "1:24.100",
+      "cutoff": "1:21.600",
       "code": "HD",
       "label": "Hero D"
     },
     {
-      "cutoff": "1:24.400",
+      "cutoff": "1:21.950",
       "code": "HE",
       "label": "Hero E"
     },
     {
-      "cutoff": "1:24.800",
+      "cutoff": "1:22.450",
       "code": "EA",
       "label": "Expert A"
     },
     {
-      "cutoff": "1:25.200",
+      "cutoff": "1:22.950",
       "code": "EB",
       "label": "Expert B"
     },
     {
-      "cutoff": "1:25.600",
+      "cutoff": "1:23.450",
       "code": "EC",
       "label": "Expert C"
     },
     {
-      "cutoff": "1:26.000",
+      "cutoff": "1:23.950",
       "code": "ED",
       "label": "Expert D"
     },
     {
-      "cutoff": "1:26.400",
+      "cutoff": "1:24.450",
       "code": "EE",
       "label": "Expert E"
     },
     {
-      "cutoff": "1:26.900",
+      "cutoff": "1:25.100",
       "code": "AA",
       "label": "Advanced A"
     },
     {
-      "cutoff": "1:27.400",
+      "cutoff": "1:25.750",
       "code": "AB",
       "label": "Advanced B"
     },
     {
-      "cutoff": "1:27.900",
+      "cutoff": "1:26.400",
       "code": "AC",
       "label": "Advanced C"
     },
     {
-      "cutoff": "1:28.400",
+      "cutoff": "1:27.050",
       "code": "AD",
       "label": "Advanced D"
     },
     {
-      "cutoff": "1:28.900",
+      "cutoff": "1:27.700",
       "code": "AE",
       "label": "Advanced E"
     },
     {
-      "cutoff": "1:29.800",
+      "cutoff": "1:28.500",
       "code": "IA",
       "label": "Intermediate A"
     },
     {
-      "cutoff": "1:30.700",
+      "cutoff": "1:29.300",
       "code": "IB",
       "label": "Intermediate B"
     },
     {
-      "cutoff": "1:31.600",
+      "cutoff": "1:30.100",
       "code": "IC",
       "label": "Intermediate C"
     },
     {
-      "cutoff": "1:32.500",
+      "cutoff": "1:30.900",
       "code": "ID",
       "label": "Intermediate D"
     },
     {
-      "cutoff": "1:33.400",
+      "cutoff": "1:31.700",
       "code": "IE",
       "label": "Intermediate E"
     },
     {
-      "cutoff": "1:34.400",
+      "cutoff": "1:32.600",
       "code": "BA",
       "label": "Beginner A"
     },
     {
-      "cutoff": "1:35.400",
+      "cutoff": "1:33.500",
       "code": "BB",
       "label": "Beginner B"
     },
     {
-      "cutoff": "1:36.400",
+      "cutoff": "1:34.400",
       "code": "BC",
       "label": "Beginner C"
     },
     {
-      "cutoff": "1:37.400",
+      "cutoff": "1:35.300",
       "code": "BD",
       "label": "Beginner D"
     },
     {
-      "cutoff": "1:38.400",
+      "cutoff": "1:36.200",
       "code": "BE",
       "label": "Beginner E"
     },
     {
-      "cutoff": "1:42.000",
+      "cutoff": "1:37.500",
       "code": "NB",
       "label": "Newbie"
     }
@@ -34026,152 +34031,152 @@
   ],
   "GP Mario Beach": [
     {
-      "cutoff": "1:23.900",
+      "cutoff": "1:24.000",
       "code": "GD",
       "label": "God"
     },
     {
-      "cutoff": "1:23.980",
+      "cutoff": "1:24.090",
       "code": "MA",
       "label": "Myth A"
     },
     {
-      "cutoff": "1:24.060",
+      "cutoff": "1:24.180",
       "code": "MB",
       "label": "Myth B"
     },
     {
-      "cutoff": "1:24.140",
+      "cutoff": "1:24.270",
       "code": "MC",
       "label": "Myth C"
     },
     {
-      "cutoff": "1:24.220",
+      "cutoff": "1:24.360",
       "code": "MD",
       "label": "Myth D"
     },
     {
-      "cutoff": "1:24.300",
+      "cutoff": "1:24.450",
       "code": "ME",
       "label": "Myth E"
     },
     {
-      "cutoff": "1:24.460",
+      "cutoff": "1:24.610",
       "code": "TA",
       "label": "Titan A"
     },
     {
-      "cutoff": "1:24.620",
+      "cutoff": "1:24.770",
       "code": "TB",
       "label": "Titan B"
     },
     {
-      "cutoff": "1:24.780",
+      "cutoff": "1:24.930",
       "code": "TC",
       "label": "Titan C"
     },
     {
-      "cutoff": "1:24.940",
+      "cutoff": "1:25.090",
       "code": "TD",
       "label": "Titan D"
     },
     {
-      "cutoff": "1:25.100",
+      "cutoff": "1:25.250",
       "code": "TE",
       "label": "Titan E"
     },
     {
-      "cutoff": "1:25.350",
+      "cutoff": "1:25.500",
       "code": "HA",
       "label": "Hero A"
     },
     {
-      "cutoff": "1:25.600",
+      "cutoff": "1:25.750",
       "code": "HB",
       "label": "Hero B"
     },
     {
-      "cutoff": "1:25.850",
+      "cutoff": "1:26.000",
       "code": "HC",
       "label": "Hero C"
     },
     {
-      "cutoff": "1:26.100",
+      "cutoff": "1:26.250",
       "code": "HD",
       "label": "Hero D"
     },
     {
-      "cutoff": "1:26.350",
+      "cutoff": "1:26.500",
       "code": "HE",
       "label": "Hero E"
     },
     {
-      "cutoff": "1:26.730",
+      "cutoff": "1:26.880",
       "code": "EA",
       "label": "Expert A"
     },
     {
-      "cutoff": "1:27.110",
+      "cutoff": "1:27.260",
       "code": "EB",
       "label": "Expert B"
     },
     {
-      "cutoff": "1:27.490",
+      "cutoff": "1:27.640",
       "code": "EC",
       "label": "Expert C"
     },
     {
-      "cutoff": "1:27.870",
+      "cutoff": "1:28.020",
       "code": "ED",
       "label": "Expert D"
     },
     {
-      "cutoff": "1:28.250",
+      "cutoff": "1:28.400",
       "code": "EE",
       "label": "Expert E"
     },
     {
-      "cutoff": "1:28.750",
+      "cutoff": "1:28.900",
       "code": "AA",
       "label": "Advanced A"
     },
     {
-      "cutoff": "1:29.250",
+      "cutoff": "1:29.400",
       "code": "AB",
       "label": "Advanced B"
     },
     {
-      "cutoff": "1:29.750",
+      "cutoff": "1:29.900",
       "code": "AC",
       "label": "Advanced C"
     },
     {
-      "cutoff": "1:30.250",
+      "cutoff": "1:30.400",
       "code": "AD",
       "label": "Advanced D"
     },
     {
-      "cutoff": "1:30.750",
+      "cutoff": "1:30.900",
       "code": "AE",
       "label": "Advanced E"
     },
     {
-      "cutoff": "1:31.420",
+      "cutoff": "1:31.540",
       "code": "IA",
       "label": "Intermediate A"
     },
     {
-      "cutoff": "1:32.090",
+      "cutoff": "1:32.180",
       "code": "IB",
       "label": "Intermediate B"
     },
     {
-      "cutoff": "1:32.760",
+      "cutoff": "1:32.820",
       "code": "IC",
       "label": "Intermediate C"
     },
     {
-      "cutoff": "1:33.430",
+      "cutoff": "1:33.460",
       "code": "ID",
       "label": "Intermediate D"
     },
@@ -34181,32 +34186,32 @@
       "label": "Intermediate E"
     },
     {
-      "cutoff": "1:35.000",
+      "cutoff": "1:34.900",
       "code": "BA",
       "label": "Beginner A"
     },
     {
-      "cutoff": "1:35.900",
+      "cutoff": "1:35.700",
       "code": "BB",
       "label": "Beginner B"
     },
     {
-      "cutoff": "1:36.800",
+      "cutoff": "1:36.500",
       "code": "BC",
       "label": "Beginner C"
     },
     {
-      "cutoff": "1:37.700",
+      "cutoff": "1:37.300",
       "code": "BD",
       "label": "Beginner D"
     },
     {
-      "cutoff": "1:38.600",
+      "cutoff": "1:38.100",
       "code": "BE",
       "label": "Beginner E"
     },
     {
-      "cutoff": "1:40.000",
+      "cutoff": "1:39.500",
       "code": "NB",
       "label": "Newbie"
     }
@@ -37199,6 +37204,193 @@
     },
     {
       "cutoff": "2:16.500",
+      "code": "NB",
+      "label": "Newbie"
+    }
+  ],
+  "SW Shroom Ridge": [
+    {
+      "cutoff": "1:46.500",
+      "code": "GD",
+      "label": "God"
+    },
+    {
+      "cutoff": "1:46.630",
+      "code": "MA",
+      "label": "Myth A"
+    },
+    {
+      "cutoff": "1:46.760",
+      "code": "MB",
+      "label": "Myth B"
+    },
+    {
+      "cutoff": "1:46.890",
+      "code": "MC",
+      "label": "Myth C"
+    },
+    {
+      "cutoff": "1:47.020",
+      "code": "MD",
+      "label": "Myth D"
+    },
+    {
+      "cutoff": "1:47.150",
+      "code": "ME",
+      "label": "Myth E"
+    },
+    {
+      "cutoff": "1:47.380",
+      "code": "TA",
+      "label": "Titan A"
+    },
+    {
+      "cutoff": "1:47.610",
+      "code": "TB",
+      "label": "Titan B"
+    },
+    {
+      "cutoff": "1:47.840",
+      "code": "TC",
+      "label": "Titan C"
+    },
+    {
+      "cutoff": "1:48.070",
+      "code": "TD",
+      "label": "Titan D"
+    },
+    {
+      "cutoff": "1:48.300",
+      "code": "TE",
+      "label": "Titan E"
+    },
+    {
+      "cutoff": "1:48.650",
+      "code": "HA",
+      "label": "Hero A"
+    },
+    {
+      "cutoff": "1:49.000",
+      "code": "HB",
+      "label": "Hero B"
+    },
+    {
+      "cutoff": "1:49.350",
+      "code": "HC",
+      "label": "Hero C"
+    },
+    {
+      "cutoff": "1:49.700",
+      "code": "HD",
+      "label": "Hero D"
+    },
+    {
+      "cutoff": "1:50.050",
+      "code": "HE",
+      "label": "Hero E"
+    },
+    {
+      "cutoff": "1:50.550",
+      "code": "EA",
+      "label": "Expert A"
+    },
+    {
+      "cutoff": "1:51.050",
+      "code": "EB",
+      "label": "Expert B"
+    },
+    {
+      "cutoff": "1:51.550",
+      "code": "EC",
+      "label": "Expert C"
+    },
+    {
+      "cutoff": "1:52.050",
+      "code": "ED",
+      "label": "Expert D"
+    },
+    {
+      "cutoff": "1:52.550",
+      "code": "EE",
+      "label": "Expert E"
+    },
+    {
+      "cutoff": "1:53.200",
+      "code": "AA",
+      "label": "Advanced A"
+    },
+    {
+      "cutoff": "1:53.850",
+      "code": "AB",
+      "label": "Advanced B"
+    },
+    {
+      "cutoff": "1:54.500",
+      "code": "AC",
+      "label": "Advanced C"
+    },
+    {
+      "cutoff": "1:55.150",
+      "code": "AD",
+      "label": "Advanced D"
+    },
+    {
+      "cutoff": "1:55.800",
+      "code": "AE",
+      "label": "Advanced E"
+    },
+    {
+      "cutoff": "1:56.600",
+      "code": "IA",
+      "label": "Intermediate A"
+    },
+    {
+      "cutoff": "1:57.400",
+      "code": "IB",
+      "label": "Intermediate B"
+    },
+    {
+      "cutoff": "1:58.200",
+      "code": "IC",
+      "label": "Intermediate C"
+    },
+    {
+      "cutoff": "1:59.000",
+      "code": "ID",
+      "label": "Intermediate D"
+    },
+    {
+      "cutoff": "1:59.800",
+      "code": "IE",
+      "label": "Intermediate E"
+    },
+    {
+      "cutoff": "2:00.700",
+      "code": "BA",
+      "label": "Beginner A"
+    },
+    {
+      "cutoff": "2:01.600",
+      "code": "BB",
+      "label": "Beginner B"
+    },
+    {
+      "cutoff": "2:02.500",
+      "code": "BC",
+      "label": "Beginner C"
+    },
+    {
+      "cutoff": "2:03.400",
+      "code": "BD",
+      "label": "Beginner D"
+    },
+    {
+      "cutoff": "2:04.300",
+      "code": "BE",
+      "label": "Beginner E"
+    },
+    {
+      "cutoff": "2:05.300",
       "code": "NB",
       "label": "Newbie"
     }
